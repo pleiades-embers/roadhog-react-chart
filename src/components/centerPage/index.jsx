@@ -14,7 +14,7 @@ class index extends PureComponent {
     return (
       <CenterPage>
         <Map mapData={mapData}></Map>
-        <CenterBottom>
+        {/* <CenterBottom>
           <div className='detail-list'>
             {detailsList
               ? detailsList.map((item, index) => {
@@ -36,7 +36,7 @@ class index extends PureComponent {
                 })
               : ''}
           </div>
-        </CenterBottom>
+        </CenterBottom> */}
       </CenterPage>
     );
   }

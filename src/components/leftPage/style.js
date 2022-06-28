@@ -9,8 +9,8 @@ export const LeftPage = styled.div`
 
 export const LeftTopBox = styled.div`
   position: relative;
-  width: 100%;
-	height:3.918918918918919rem;
+  width: 6.01rem;
+  height: 3.63rem;
   margin-top: 20px;
   .borderBox8 {
     width: inherit;
@@ -24,8 +24,8 @@ export const LeftTopBox = styled.div`
 `;
 export const LeftCenterBox = styled.div`
   position: relative;
-  width: 100%;
-  height:3.918918918918919rem;
+  width: 6.01rem;
+  height: 3.63rem;
   margin-top: 20px;
   .borderBox8 {
     width: inherit;
@@ -40,8 +40,8 @@ export const LeftCenterBox = styled.div`
 
 export const LeftBottomBox = styled.div`
  position: relative;
-  width: 100%;
-  height:3.918918918918919rem;
+ width: 6.01rem;
+ height: 3.63rem;
   margin-top: 20px;
   .borderBox8 {
     width: inherit;

@@ -9,8 +9,8 @@ box-sizing: border-box;
 
 export const RightTopBox = styled.div`
 position: relative;
-width: 100%;
-height:3.918918918918919rem;
+width: 6.01rem;
+height: 3.63rem;
 margin-top: 20px;
 .borderBox8 {
   width: inherit;
@@ -25,8 +25,8 @@ margin-top: 20px;
 
 export const RightCenterBox = styled.div`
 position: relative;
-width: 100%;
-height:3.918918918918919rem;
+width: 6.01rem;
+height: 3.63rem;
 margin-top: 20px;
 .borderBox8 {
   width: inherit;
@@ -41,8 +41,8 @@ margin-top: 20px;
 
 export const RightBottomBox = styled.div`
 position: relative;
-width: 100%;
-height:3.918918918918919rem;
+width: 6.01rem;
+height: 3.63rem;
 margin-top: 20px;
 .borderBox8 {
   width: inherit;
