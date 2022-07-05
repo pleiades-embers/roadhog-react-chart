@@ -1,8 +1,15 @@
 import request from '../utils/request';
 
 // 美国各州数据
-export const getAreaUsa = async () => {
-  return request('/api/epidemic/area/usa').then(response => {
+export const postAreaUsa = async (params={
+  "type":"usa",
+  "date":"2022-07-02"
+}) => {
+  return request('/api/epidemic/area',{
+    method: 'POST',
+    mode:"cors",
+    body: JSON.stringify(params),
+  }).then(response => {
     return response.data;
   });
 };

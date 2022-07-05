@@ -1,7 +1,6 @@
-import React, { PureComponent } from 'react';
-import Chart from '../../../utils/chart';
-import { mapOptions } from './options';
-
+import React, { PureComponent } from "react";
+import Chart from "../../../utils/chart";
+import { mapOptions } from "./options";
 
 /**
  * 1. 参考echarts 3d地图案例 https://www.makeapie.cn/echarts_content/x8qMIlaLpr.html
@@ -14,7 +13,7 @@ class Map extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      renderer: 'canvas',
+      renderer: "canvas",
     };
   }
 
@@ -24,11 +23,16 @@ class Map extends PureComponent {
     return (
       <div
         style={{
-          width: '10.85rem',
-          height: '6.95rem',
-          marginBottom:"0.31rem"
-        }}>
-     <Chart renderer={renderer} option={mapOptions(mapData)} />:''
+          width: "10.85rem",
+          height: "6.95rem",
+          marginBottom: "0.31rem",
+        }}
+      >
+        {mapData ? (
+          <Chart renderer={renderer} option={mapOptions(mapData)} />
+        ) : (
+          ""
+        )}
       </div>
     );
   }

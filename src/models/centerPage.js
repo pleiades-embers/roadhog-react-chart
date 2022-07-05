@@ -1,4 +1,4 @@
-import {getAreaUsa} from  "../services/index"
+import {postAreaUsa} from  "../services/index"
 export default {
   // 命名空间 (必填)
   namespace: 'centerPage',
@@ -17,25 +17,25 @@ export default {
     },
   },
 
-  // 异步请求
+  // 获取地图数据
   effects: {
     *getCenterPageData({ payload }, { call, put }) {
-      const data = yield call(getAreaUsa);
-      if (data) {
+      const res = yield call(postAreaUsa);
+      if (res.code===0) {
         yield put({
-          type: 'setData',
-          payload: data,
+          type: 'setMapData',
+          payload: res.data,
         });
       } else {
-        console.log(`获取中间数据数据失败`);
+        console.log(`获取地图数据失败`);
       }
     },
   },
 
   // 同步操作
   reducers: {
-    setData(state, action) {
-      return { ...state, ...action.payload };
+    setMapData(state,{payload}) {
+      return { ...state, mapData:payload };
     },
   },
 };

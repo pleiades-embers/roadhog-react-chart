@@ -1,31 +1,6 @@
 import echarts from "echarts/lib/echarts";
 import "echarts/map/js/china";
-
-//  地图数据
-const mapData = [
-  // { name: "勉阳镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "武侯镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "周家山镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "同沟寺镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "新街子镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "老道寺镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "褒城镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "金泉镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "定军山镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "温泉镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "元墩镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "阜川镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "新铺镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "青羊驿镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "茶店镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "镇川镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "漆树坝镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "张家河镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-  // { name: "长沟河镇", value: (Math.random() * 1000 + 100).toFixed(0) },
-];
-
 export const mapOptions = (params) => ({
- 
   // visualMap: {
   //   show: true,
   //   min: 0,
@@ -38,48 +13,55 @@ export const mapOptions = (params) => ({
   //   textStyle: {
   //     color: "#fff",
   //   },
-  // },
-        //热力地图设置此处可设置热力地图的颜色和变化范围
-        visualMap: {
-          type: 'piecewise',
-          pieces: [{
-                  min: 100001,
-                  color: '#eb3528',
-              },
-              {
-                  min: 10000,
-                  max: 100000,
-                  color: '#cd5517'
-              },
-              {
-                  min: 5000,
-                  max: 9999,
-                  color:'#eda537'
-              },
-              {
-                min: 1,
-                max: 4999,
-                color:'#6be0ef'
-            },
-          ],
-          orient: 'vertical',
-          itemWidth: 25,
-          itemHeight: 15,
-          showLabel: true,
-          seriesIndex: [0],
-
-          textStyle: {
-              color: '#7B93A7'
-          },
-          bottom: '3%',
-          right: "3%",
+  //热力地图设置此处可设置热力地图的颜色和变化范围
+  visualMap: {
+    type: "piecewise",
+    pieces: [
+      {
+        min: 100001,
+        color: "#eb3528",
       },
+      {
+        min: 10000,
+        max: 100000,
+        color: "#cd5517",
+      },
+      {
+        min: 5000,
+        max: 9999,
+        color: "#eda537",
+      },
+      {
+        min: 1,
+        max: 4999,
+        color: "#6be0ef",
+      },
+    ],
+    orient: "vertical",
+    itemWidth: 25,
+    itemHeight: 15,
+    showLabel: true,
+    seriesIndex: [0],
+
+    textStyle: {
+      color: "#7B93A7",
+    },
+    bottom: "3%",
+    right: "3%",
+  },
+  tooltip: {
+    show: true,
+ },
   series: [
     {
       name: "America",
       type: "map3D",
       map: "America",
-      boxDepth:120, //地图倾斜度  正交投影失效
+
+      //数据源
+      data:[{name:"Montana", value: "21312312"},{name:"North Dakota",value:Math.round(Math.random() * 1000)},{name:"Kansas",value:99999999}],
+      boxWidth: 110, //三维地图的宽度
+      boxDepth: 120, //地图倾斜度  正交投影失效
       regionHeight: 3, //地图厚度
       label: {
         show: true, //是否显示市
@@ -98,8 +80,7 @@ export const mapOptions = (params) => ({
       groundplane: {
         show: false,
       },
-      data: params,
-      shading: 'realistic',
+      shading: "realistic",
       // 真实感材质相关配置 shading: 'realistic'时有效
       realisticMaterial: {
         detailTexture: "#fff", // 纹理贴图
@@ -113,8 +94,21 @@ export const mapOptions = (params) => ({
         projection: "orthographic",
         //正交投影此配置失效
         // distance: 80,
-        orthographicSize:80
+        orthographicSize: 80,
       },
     },
   ],
+  //处理特效
+  postEffect:{
+    enable:true,
+    //环境光遮蔽
+    screenSpaceAmbientOcclusion:{
+      enable:true,
+      quality: 'high',
+    },
+    //分帧超采样
+    temporalSuperSampling:{
+      enable:true,
+    }
+  }
 });
