@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { CenterPage, CenterBottom } from './style';
+import { CenterPage, CenterBottom,CenterTab } from './style';
 import Map from './charts/Map';
+import { BorderBox8 } from "@jiaminghi/data-view-react";
 import { connect } from 'dva';
 
 class index extends PureComponent {
@@ -13,30 +14,13 @@ class index extends PureComponent {
     const { detailsList, mapData } = this.props;
     return (
       <CenterPage>
+        <CenterTab></CenterTab>
         <Map mapData={mapData}></Map>
-        {/* <CenterBottom>
-          <div className='detail-list'>
-            {detailsList
-              ? detailsList.map((item, index) => {
-                  return (
-                    <div className='detail-list-item' key={index}>
-                      <img
-                        src={require(`../../assets/images/center-details-data${
-                          index + 1
-                        }.png`)}
-                        alt={item.title}
-                      />
-                      <div className='detail-item-text'>
-                        <h3>{item.title}</h3>
-                        <span>{item.number}</span>
-                        <span className='unit'>{item.unit}</span>
-                      </div>
-                    </div>
-                  );
-                })
-              : ''}
-          </div>
-        </CenterBottom> */}
+        <CenterBottom>
+        <BorderBox8  className="borderBox8">
+
+        </BorderBox8>
+        </CenterBottom>
       </CenterPage>
     );
   }

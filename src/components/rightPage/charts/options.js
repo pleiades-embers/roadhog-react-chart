@@ -1,24 +1,24 @@
-import echarts from 'echarts/lib/echarts';
+import echarts from "echarts/lib/echarts";
 
 // 关联数据类别
-export const BrowseCategoriesOptions = params => ({
+export const BrowseCategoriesOptions = (params) => ({
   radar: {
-    center: ['50%', '50%'],
-    radius: '70%',
+    center: ["50%", "50%"],
+    radius: "70%",
     name: {
       formatter: function (name) {
         let arr;
-        arr = ['{a|' + name + '}'];
-        return arr.join('\n');
+        arr = ["{a|" + name + "}"];
+        return arr.join("\n");
       },
       textStyle: {
         rich: {
           //根据文字的组设置格式
           a: {
-            color: '#BCDCFF',
+            color: "#BCDCFF",
             fontSize: 14,
             fontWeight: 600,
-            fontFamily: 'Source Han Sans CN',
+            fontFamily: "Source Han Sans CN",
           },
         },
       },
@@ -35,14 +35,14 @@ export const BrowseCategoriesOptions = params => ({
     splitArea: {
       areaStyle: {
         color: [
-          'rgba(84,136,255, 0.05)',
-          'rgba(84,136,255, 0.1)',
-          'rgba(84,136,255, 0.2)',
-          'rgba(84,136,255, 0.3)',
-          'rgba(84,136,255, 0.4)',
-          'rgba(84,136,255, 0.5)',
+          "rgba(84,136,255, 0.05)",
+          "rgba(84,136,255, 0.1)",
+          "rgba(84,136,255, 0.2)",
+          "rgba(84,136,255, 0.3)",
+          "rgba(84,136,255, 0.4)",
+          "rgba(84,136,255, 0.5)",
         ].reverse(),
-        shadowColor: 'rgba(0, 0, 0, .5)',
+        shadowColor: "rgba(0, 0, 0, .5)",
         shadowBlur: 5,
         shadowOffsetX: 10,
         shadowOffsetY: 10,
@@ -51,29 +51,29 @@ export const BrowseCategoriesOptions = params => ({
   },
   series: [
     {
-      name: '用户浏览类别',
-      type: 'radar',
+      name: "用户浏览类别",
+      type: "radar",
       data: [params.data],
       label: {
         show: false,
         formatter: function (params) {
-          return params.value + '万';
+          return params.value + "万";
         },
-        color: '#9ae8ac',
+        color: "#9ae8ac",
         distance: 10,
-        align: 'right',
+        align: "right",
       },
-      symbol: 'none',
+      symbol: "none",
       symbolSize: [6, 6],
       // 边缘颜色
       lineStyle: {
-        color: 'rgba(160,159,246, 0.6)',
+        color: "rgba(160,159,246, 0.6)",
         width: 2,
       },
       areaStyle: {
-        color: 'rgba(114,113,233,.4)',
+        color: "rgba(114,113,233,.4)",
         opacity: 0.8,
-        shadowColor: 'rgba(115,149,255,1)',
+        shadowColor: "rgba(115,149,255,1)",
         shadowBlur: 10,
       },
     },
@@ -81,25 +81,25 @@ export const BrowseCategoriesOptions = params => ({
 });
 
 // 反馈
-export const FeedbackOptions = params => ({
+export const FeedbackOptions = (params) => ({
   title: {
     text: `${params.number}%`,
-    left: '45%',
-    top: '40%',
-    textAlign: 'center',
+    left: "45%",
+    top: "40%",
+    textAlign: "center",
     textStyle: {
-      fontSize: '16',
-      fontWeight: '500',
-      color: '#909dff',
-      textAlign: 'center',
+      fontSize: "16",
+      fontWeight: "500",
+      color: "#909dff",
+      textAlign: "center",
     },
   },
   series: [
     {
-      type: 'pie',
+      type: "pie",
       startAngle: 0,
-      radius: ['80%', '70%'],
-      center: ['50%', '50%'],
+      radius: ["80%", "70%"],
+      center: ["50%", "50%"],
       data: [
         {
           value: params.number,
@@ -109,14 +109,14 @@ export const FeedbackOptions = params => ({
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                 {
                   offset: 0,
-                  color: '#5a8bfa',
+                  color: "#5a8bfa",
                 },
                 {
                   offset: 1,
-                  color: '#831bdb',
+                  color: "#831bdb",
                 },
               ]),
-              shadowColor: 'rgba(175,143,230,.5)',
+              shadowColor: "rgba(175,143,230,.5)",
               shadowBlur: 10,
             },
           },
@@ -148,7 +148,7 @@ export const FeedbackOptions = params => ({
           value: 100 - params.number,
           hoverAnimation: true,
           itemStyle: {
-            color: 'rgba(79,76,192, 0.3)',
+            color: "rgba(79,76,192, 0.3)",
           },
         },
       ],
@@ -157,40 +157,40 @@ export const FeedbackOptions = params => ({
 });
 
 //  线下门店流量
-export const OfflinePortalOptions = params => ({
-  color: ['#73A0FA', '#73DEB3', '#32C5E9', '#67E0E3'],
+export const OfflinePortalOptions = (params) => ({
+  color: ["#73A0FA", "#73DEB3", "#32C5E9", "#67E0E3"],
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'cross',
+      type: "cross",
       crossStyle: {
-        color: '#999',
+        color: "#999",
       },
       lineStyle: {
-        type: 'dashed',
+        type: "dashed",
       },
     },
   },
   grid: {
-    left: '15',
-    right: '15',
-    bottom: '0',
-    top: '30',
+    left: "15",
+    right: "15",
+    bottom: "0",
+    top: "30",
     containLabel: true,
   },
   legend: {
-    data: ['门店1', '门店2', '门店3', '门店4'],
+    data: ["门店1", "门店2", "门店3", "门店4"],
     show: true,
     textStyle: {
-      color: '#BCDCFF',
+      color: "#BCDCFF",
     },
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: params.xData,
       axisLabel: {
-        color: '#BCDCF0',
+        color: "#BCDCF0",
         textStyle: {
           fontSize: 12,
         },
@@ -207,9 +207,9 @@ export const OfflinePortalOptions = params => ({
       boundaryGap: true,
     },
     {
-      type: 'category',
+      type: "category",
       axisLabel: {
-        color: '#BCDCF0',
+        color: "#BCDCF0",
         textStyle: {
           fontSize: 12,
         },
@@ -228,13 +228,13 @@ export const OfflinePortalOptions = params => ({
   ],
   yAxis: [
     {
-      type: 'value',
-      name: '单位/人',
+      type: "value",
+      name: "单位/人",
       nameTextStyle: {
-        color: '#BCDCFF',
+        color: "#BCDCFF",
       },
       axisLabel: {
-        color: '#BCDCF0',
+        color: "#BCDCF0",
         textStyle: {
           fontSize: 12,
         },
@@ -242,7 +242,7 @@ export const OfflinePortalOptions = params => ({
       splitLine: {
         show: true,
         lineStyle: {
-          color: '#252938',
+          color: "#252938",
         },
       },
       axisTick: {
@@ -253,61 +253,61 @@ export const OfflinePortalOptions = params => ({
       },
     },
     {
-      type: 'value',
+      type: "value",
       min: 0,
       max: 100,
       interval: 20,
-      name: '密度',
+      name: "密度",
       //网格样式
       splitLine: {
         show: false,
       },
       axisLine: {
         lineStyle: {
-          color: '#94b5ca',
+          color: "#94b5ca",
         },
       },
     },
   ],
   series: [
     {
-      name: '门店1',
-      type: 'line',
+      name: "门店1",
+      type: "line",
       data: params.data1,
     },
     {
-      name: '门店2',
-      type: 'line',
+      name: "门店2",
+      type: "line",
       data: params.data2,
     },
     {
-      name: '门店3',
-      type: 'line',
+      name: "门店3",
+      type: "line",
       data: params.data3,
     },
     {
-      name: '门店4',
-      type: 'line',
+      name: "门店4",
+      type: "line",
       data: params.data4,
     },
     {
-      name: '额度',
-      type: 'bar',
+      name: "额度",
+      type: "bar",
       data: params.barData,
       itemStyle: {
         normal: {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
-              color: 'rgba(34,224,214,.8)',
+              color: "rgba(34,224,214,.8)",
             },
             {
               offset: 0.5,
-              color: 'rgba(5,137,186,1)',
+              color: "rgba(5,137,186,1)",
             },
             {
               offset: 1,
-              color: 'rgba(11,12,31,1)',
+              color: "rgba(11,12,31,1)",
             },
           ]),
           barBorderRadius: 7.5,
@@ -317,3 +317,69 @@ export const OfflinePortalOptions = params => ({
     },
   ],
 });
+
+/**
+ * 新增确诊趋势 柱状图
+ */
+export const DiagnosisTrendOption = (params) => ({
+  xAxis: {
+    data: ["06-07", "06-08", "06-09", "06-10", "06-11", "06-12", "06-13"],
+    axisLine: {
+      lineStyle: {
+        color: "#ccc",
+      },
+    },
+  },
+  yAxis: {
+    axisLine: {
+      lineStyle: {
+        color: "#ccc",
+      },
+    },
+  },
+  //控制图表占此容器的位置
+  grid: {
+    bottom: 20,
+    left:50,
+    right:20,
+  },
+  series: [
+    {
+      name: "Sale",
+      type: "bar",
+      data: [9800, 14180, 23500, 13500, 10500, 12500, 8800],
+      barWidth: "10px",
+      itemStyle: {
+        normal: {
+          color: new echarts.graphic.LinearGradient(
+            0,
+            0,
+            0,
+            1,
+            [
+              {
+                offset: 0,
+                color: "#07489f", // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: "#00a3ff", // 100% 处的颜色
+              },
+            ],
+            false
+          ),
+          barBorderRadius: [30, 30, 0, 0],
+        },
+      },
+    },
+  ],
+});
+
+
+/**
+ * 实时各州数据概况
+ */
+export const AreaScrollBoardOptions = (params) => ({
+  header: params.header,
+  data: params.data,
+})

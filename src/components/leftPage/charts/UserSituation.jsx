@@ -36,16 +36,12 @@ class UserSituation extends PureComponent {
 
     return (
       <div>
-        {userSitua ? (
           <ScrollBoard
             config={config}
             style={{
               width: '5.475rem',
               height: '6.875rem',
             }}></ScrollBoard>
-        ) : (
-          ''
-        )}
       </div>
     );
   }

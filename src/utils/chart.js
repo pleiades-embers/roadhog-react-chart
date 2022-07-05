@@ -8,13 +8,11 @@ import * as echarts from 'echarts';
 import 'echarts-gl';
 import 'zrender/lib/svg/svg';
 import { debounce } from './index'; // 一个节流函数
-import USA from './map/USA.json';
-
+import America from './map/US-all.json';
 /**
  * 加载地图
  */
-echarts.registerMap("USA", USA);  
-
+echarts.registerMap("America", America);  
 
 export default class Chart extends PureComponent {
   constructor(props) {

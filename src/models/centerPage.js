@@ -1,4 +1,4 @@
-import { getCenterPageData } from '../services/index';
+import {getAreaUsa} from  "../services/index"
 export default {
   // 命名空间 (必填)
   namespace: 'centerPage',
@@ -10,7 +10,6 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen((location, action) => {
-        // 参数可以直接简写成{pathname}
         if (location.pathname === '/') {
           dispatch({ type: 'getCenterPageData' });
         }
@@ -21,7 +20,7 @@ export default {
   // 异步请求
   effects: {
     *getCenterPageData({ payload }, { call, put }) {
-      const data = yield call(getCenterPageData);
+      const data = yield call(getAreaUsa);
       if (data) {
         yield put({
           type: 'setData',

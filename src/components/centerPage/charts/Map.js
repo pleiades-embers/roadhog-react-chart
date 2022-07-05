@@ -26,6 +26,7 @@ class Map extends PureComponent {
         style={{
           width: '10.85rem',
           height: '6.95rem',
+          marginBottom:"0.31rem"
         }}>
      <Chart renderer={renderer} option={mapOptions(mapData)} />:''
       </div>

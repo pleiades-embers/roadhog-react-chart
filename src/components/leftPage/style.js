@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const LeftPage = styled.div`
-  width: 6.1rem;
+  width: 6.01rem;
   height: auto;
-  padding-left: 0.2rem;
+  padding-left: 0.38rem;
   box-sizing: border-box;
 `;
 
@@ -11,7 +11,7 @@ export const LeftTopBox = styled.div`
   position: relative;
   width: 6.01rem;
   height: 3.63rem;
-  margin-top: 20px;
+  margin-top: 0.25rem;
   .borderBox8 {
     width: inherit;
     height: inherit;
@@ -26,7 +26,7 @@ export const LeftCenterBox = styled.div`
   position: relative;
   width: 6.01rem;
   height: 3.63rem;
-  margin-top: 20px;
+  margin-top: 0.25rem;
   .borderBox8 {
     width: inherit;
     height: inherit;
@@ -42,7 +42,8 @@ export const LeftBottomBox = styled.div`
  position: relative;
  width: 6.01rem;
  height: 3.63rem;
-  margin-top: 20px;
+ margin-top: 0.25rem;
+ margin-bottom: 0.31rem;
   .borderBox8 {
     width: inherit;
     height: inherit;

@@ -10,7 +10,6 @@ class BrowseCategories extends PureComponent {
       renderer: 'canvas',
     };
   }
-
   render() {
     const { renderer } = this.state;
     const { browseCategories } = this.props;

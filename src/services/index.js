@@ -1,22 +1,37 @@
 import request from '../utils/request';
 
-// 获取左侧界面数据请求
-export const getLeftPageData = async () => {
-  return request('/api/leftPageData').then(response => {
+// 美国各州数据
+export const getAreaUsa = async () => {
+  return request('/api/epidemic/area/usa').then(response => {
     return response.data;
   });
 };
 
-// 获取中间界面数据请求
-export const getCenterPageData = async () => {
-  return request('/api/centerPageData').then(response => {
+// 地区疫情
+export const getArea = async () => {
+  return request('/api/epidemic/area').then(response => {
     return response.data;
   });
 };
 
-// 获取右侧界面数据请求
-export const getRightPageData = async () => {
-  return request('/api/rightPageData').then(response => {
+// 城市数据概况
+export const getCity = async () => {
+  return request('/api/epidemic/city').then(response => {
     return response.data;
   });
 };
+
+//风险预警信息
+export const getMessage = async () => {
+  return request('/api/epidemic/message').then(response => {
+    return response.data;
+  });
+};
+
+//传染病Top5
+export const getRank = async () => {
+  return request('/api/epidemic/rank').then(response => {
+    return response.data;
+  });
+};
+

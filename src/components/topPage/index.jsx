@@ -50,14 +50,10 @@ class index extends PureComponent {
             <Decoration10 className='top_decoration10_sk_left' />
             <Decoration10 className='top_decoration10_l' />
             <div className='title-box'></div>
-            {/* <Decoration10 className='top_decoration10_sk' /> */}
             <Decoration10 className='top_decoration10 top_decoration10_right top_decoration10_reverse' />
             <Decoration6  className='top_decoration6 top_decoration6_right top_decoration6_reverse' />  
             <Decoration10 className='top_decoration10_sk_right' />
             <Decoration10 className='top_decoration10_r' />
-            {/* <TimeBox>
-              <h3>{this.state.timeStr}</h3>
-            </TimeBox> */}
           </div>
         </TopBox>
       </Fragment>

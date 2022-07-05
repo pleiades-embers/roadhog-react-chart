@@ -26,25 +26,60 @@ const mapData = [
 
 export const mapOptions = (params) => ({
  
-  visualMap: {
-    show: true,
-    min: 0,
-    max: 1000,
-    calculable: true,
-    realtime: false,
-    inRange: {
-      color: ["#2884db", "#244779"],
-    },
-    textStyle: {
-      color: "#fff",
-    },
-  },
+  // visualMap: {
+  //   show: true,
+  //   min: 0,
+  //   max: 1000,
+  //   calculable: true,
+  //   realtime: false,
+  //   inRange: {
+  //     color: ["#2884db", "#244779"],
+  //   },
+  //   textStyle: {
+  //     color: "#fff",
+  //   },
+  // },
+        //热力地图设置此处可设置热力地图的颜色和变化范围
+        visualMap: {
+          type: 'piecewise',
+          pieces: [{
+                  min: 100001,
+                  color: '#eb3528',
+              },
+              {
+                  min: 10000,
+                  max: 100000,
+                  color: '#cd5517'
+              },
+              {
+                  min: 5000,
+                  max: 9999,
+                  color:'#eda537'
+              },
+              {
+                min: 1,
+                max: 4999,
+                color:'#6be0ef'
+            },
+          ],
+          orient: 'vertical',
+          itemWidth: 25,
+          itemHeight: 15,
+          showLabel: true,
+          seriesIndex: [0],
+
+          textStyle: {
+              color: '#7B93A7'
+          },
+          bottom: '3%',
+          right: "3%",
+      },
   series: [
     {
-      name: "USA",
+      name: "America",
       type: "map3D",
-      map: "USA",
-      boxDepth: 120, //地图倾斜度
+      map: "America",
+      boxDepth:120, //地图倾斜度  正交投影失效
       regionHeight: 3, //地图厚度
       label: {
         show: true, //是否显示市
@@ -74,9 +109,11 @@ export const mapOptions = (params) => ({
         roughnessAdjust: 0,
       },
       viewControl: {
-        projection: "perspective",
-        distance: 120,
-        center: [-5, -22, 0],
+        //投影方式，默认为透视投影'perspective'，也支持设置为正交投影'orthographic'。
+        projection: "orthographic",
+        //正交投影此配置失效
+        // distance: 80,
+        orthographicSize:80
       },
     },
   ],

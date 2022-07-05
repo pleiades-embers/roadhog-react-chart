@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const RightPage = styled.div`
-width: 6.1rem;
+width: 6.01rem;
 height: auto;
-padding-right: 0.2rem;
+margin-right: 0.25rem;
 box-sizing: border-box;
 `;
 
@@ -11,7 +11,7 @@ export const RightTopBox = styled.div`
 position: relative;
 width: 6.01rem;
 height: 3.63rem;
-margin-top: 20px;
+margin-top: 0.25rem;
 .borderBox8 {
   width: inherit;
   height: inherit;
@@ -27,7 +27,7 @@ export const RightCenterBox = styled.div`
 position: relative;
 width: 6.01rem;
 height: 3.63rem;
-margin-top: 20px;
+margin-top: 0.25rem;
 .borderBox8 {
   width: inherit;
   height: inherit;
@@ -43,7 +43,7 @@ export const RightBottomBox = styled.div`
 position: relative;
 width: 6.01rem;
 height: 3.63rem;
-margin-top: 20px;
+margin-top: 0.25rem;
 .borderBox8 {
   width: inherit;
   height: inherit;

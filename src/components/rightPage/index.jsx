@@ -5,6 +5,9 @@ import UserIdentityCategory from "./charts/UserIdentityCategory";
 import OfflinePortal from "./charts/OfflinePortal";
 import Feedback from "./charts/Feedback";
 import { ModuleTitle } from "../../style/globalStyledSet";
+import DiagnosisTrend from "./charts/DiagnosisTrend"
+import RealTimeState from "./charts/RealTimeState"
+import RealTimeCity from "./charts/RealTimeCity"
 import { connect } from "dva";
 import {
   RightPage,
@@ -19,21 +22,26 @@ class index extends PureComponent {
     this.state = {};
   }
   render() {
-    const { offline, browseCategories, userIdentityCategory } = this.props;
+    const { offline, browseCategories, userIdentityCategory,realTimeState } = this.props;
+    console.log(offline,"offline")
     return (
       <RightPage>
         <RightTopBox>
           <BorderBox8 reverse="{true}" className="borderBox8">
-            x
+          <DiagnosisTrend/>
           </BorderBox8>
         </RightTopBox>
 
         <RightCenterBox>
-          <BorderBox8 reverse="{true}" className="borderBox8"></BorderBox8>
+          <BorderBox8 reverse="{true}" className="borderBox8">
+            <RealTimeState realTimeState={realTimeState}></RealTimeState>
+          </BorderBox8>
         </RightCenterBox>
 
         <RightBottomBox>
-          <BorderBox8 reverse="{true}" className="borderBox8"></BorderBox8>
+          <BorderBox8 reverse="{true}" className="borderBox8">
+            <RealTimeCity></RealTimeCity>
+          </BorderBox8>
         </RightBottomBox>
       </RightPage>
     );
@@ -45,6 +53,7 @@ const mapStateToProps = (state) => {
     browseCategories: state.rightPage.browseCategories,
     userIdentityCategory: state.rightPage.userIdentityCategory,
     offline: state.rightPage.offline,
+    realTimeState:state.rightPage.realTimeState
   };
 };
 
