@@ -7,12 +7,35 @@ class InfectiousDisease extends PureComponent {
     super(props);
     this.state = {
       renderer: "canvas",
-      data: [],
     };
   }
 
+
+  getChartData(){
+    const {data}=this.props
+    
+    let value = [];
+    let indicator=[]
+    value=data.map(item=>{
+        return item.infectNum
+    })
+    
+
+    indicator=data.map(item=>{
+        return {
+            name:item.name,
+        }
+    })
+
+
+
+    return {value,indicator}
+  }
+
+
   render() {
-    const { renderer, data } = this.state;
+    const { renderer } = this.state;
+
     return (
       <div
         style={{
@@ -20,7 +43,7 @@ class InfectiousDisease extends PureComponent {
           height: "90%",
         }}
       >
-        <Chart renderer={renderer} option={InfectiousDiseaseOption(data)} />
+        <Chart renderer={renderer} option={InfectiousDiseaseOption(this.getChartData())} />
       </div>
     );
   }

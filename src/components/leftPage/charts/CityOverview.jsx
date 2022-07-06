@@ -44,36 +44,56 @@ class CityOverview extends PureComponent {
 
     const sortData = sortBy(data[0].subList, function (o) {
       return -Number(o.confirmed);
-    }).splice(0, 10);
+    });
     chartData = sortData.map((item, i) => {
       return {
         value: item.confirmed,
         name: item.area,
-        itemStyle: {
+        ...(i <= 5 ? {
+          label: {
+            normal: {
+              fontSize: 12,
+              color: "#8d9397",
+            }
+          }}:{
+            label:{
+              show:true,
+              normal:{
+                show:false,
+                position:'inside',
+                fontSize: 8,
+                align: "right",
+                padding: 4,
+                color: "#8d9397"
+              }
+            }
+          }
+    ),
+      itemStyle: {
           ...colorList[i > 5 ? 5 : i],
         },
-      };
-    });
-    return chartData;
+  };
+});
+return chartData;
   }
 
-  render() {
-    const { renderer } = this.state;
+render() {
+  const { renderer } = this.state;
 
-    return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Chart
-          renderer={renderer}
-          option={CityOverviewOption(this.getChartData())}
-        />
-      </div>
-    );
-  }
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Chart
+        renderer={renderer}
+        option={CityOverviewOption(this.getChartData())}
+      />
+    </div>
+  );
+}
 }
 
 export default CityOverview;

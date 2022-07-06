@@ -42,7 +42,7 @@ class index extends PureComponent {
   }
 
   render() {
-    const { mapData } = this.props;
+    const { mapData,rankData } = this.props;
     const { config, style, arr } = this.state;
 
 
@@ -87,7 +87,9 @@ class index extends PureComponent {
       <LeftBottomBox>
         <BorderBox8 className="borderBox8">
           <TitleBox title="Top5传染病"></TitleBox>
-          <InfectiousDisease />
+          {
+            rankData && rankData.length > 0 &&(<InfectiousDisease data={rankData} />)
+          }
         </BorderBox8>
       </LeftBottomBox>
       </LeftPage >
@@ -98,6 +100,7 @@ class index extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     mapData: state.centerPage.mapData,
+    rankData:state.centerPage.rankData
   };
 };
 

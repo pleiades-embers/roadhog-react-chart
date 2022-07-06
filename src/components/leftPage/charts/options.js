@@ -214,15 +214,9 @@ export const CityOverviewOption = (params) => ({
       name: '',
       type: 'pie',
       radius: ['30%', '80%'],
-      center: ['50%', '44%'],
+      center: ['50%', '60%'],
       roseType: 'area',
-      label: {
-          show: true,
-          normal: {
-              position: 'outside',
-              fontSize: 16
-          }
-      },
+
       labelLine: {
           length: 1,
           length2: 20,
@@ -235,17 +229,11 @@ export const CityOverviewOption = (params) => ({
 export const InfectiousDiseaseOption = (params) => ({
   color:["#0063e9"],
   //雷达图-玫瑰图特有配置
-
+  tooltip: {},
   radar: [
     {
       center: ['48%', '54%'],
-      indicator: [
-        { name: '新冠' },
-        { text: '麻风'},
-        { text: '天花'},
-        { text: '鼠疫'},
-        { text: '猴痘'}
-      ],
+      indicator: params.indicator,
       shape: 'circle',
         axisName: {
         color: '#939a9e'
@@ -271,18 +259,42 @@ export const InfectiousDiseaseOption = (params) => ({
   ],
   series: [
     {
+      name: '传染病Top5',
       type: 'radar',
       emphasis: {
         lineStyle: {
           width: 4
         }
       },
+      // label: {
+      //   show: true
+      // },
       data: [
         {
-          value: [100, 8, 0.4, -80, 2000],
+          value: params.value,
           areaStyle: {
-            color: '#205f9a'
-          }
+            normal: { // 单项区域填充样式
+                color: {
+                    type: 'linear',
+                    x: 0, //右
+                    y: 0, //下
+                    x2: 1, //左
+                    y2: 1, //上
+                    colorStops: [{
+                        offset: 0,
+                        color: '#00c2ff'
+                    }, {
+                        offset: 0.5,
+                        color: 'rgba(0,0,0,0)'
+                    }, {
+                        offset: 1,
+                        color: '#205f9a'
+                    }],
+                    globalCoord: false
+                },
+                opacity: 1 // 区域透明度
+            }
+        },
         },
         
       ]
