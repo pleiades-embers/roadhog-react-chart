@@ -11,6 +11,7 @@
     "dva": "^2.4.1",
     "echarts": "^4.9.0",
     "echarts-gl": "1.1.2",
+    "lodash": "^4.17.21",
     "node-sass": "^4.14.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

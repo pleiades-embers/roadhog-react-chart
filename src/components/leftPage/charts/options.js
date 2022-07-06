@@ -214,7 +214,7 @@ export const CityOverviewOption = (params) => ({
       name: '',
       type: 'pie',
       radius: ['30%', '80%'],
-      center: ['50%', '60%'],
+      center: ['50%', '44%'],
       roseType: 'area',
       label: {
           show: true,
@@ -228,50 +228,7 @@ export const CityOverviewOption = (params) => ({
           length2: 20,
           smooth: true
       },
-      data: [{
-              value: 444444,
-              name: '波士顿',
-              itemStyle: {
-                  color: "rgba(50,123,250,0.7)",
-                  borderColor: "rgba(50,123,250,1)",
-
-              }
-          },
-          {
-              value: 333333,
-              name: '博伊西',
-              itemStyle: {
-                  color: "rgba(244,201,7,0.7)",
-                  borderColor: "rgba(244,201,7,1)",
-              }
-          },
-          {
-              value: 123123,
-              name: '纽约',
-              itemStyle: {
-                  color: "rgba(23,216,161,0.7)",
-                  borderColor: "rgba(23,216,161,1)",
-              }
-          },
-          {
-              value: 333333,
-              name: '内环达',
-              itemStyle: {
-                  color: "rgba(122,60,235,0.7)",
-                  borderColor: "rgba(122,60,235,1)",
-
-            }
-          },
-          {
-              value: 341231,
-              name: '底特律',
-              itemStyle: {
-                  color: "rgba(15,197,243,0.7)",
-                  borderColor: "rgba(15,197,243,1)",
-              }
-          },
-          
-      ]
+      data:params
   }]
 });
 
@@ -281,7 +238,7 @@ export const InfectiousDiseaseOption = (params) => ({
 
   radar: [
     {
-      center: ['48%', '60%'],
+      center: ['48%', '54%'],
       indicator: [
         { name: '新冠' },
         { text: '麻风'},
@@ -302,7 +259,7 @@ export const InfectiousDiseaseOption = (params) => ({
       },
       axisLine: {
         lineStyle: {
-          color: '#1e5b93'
+          color: '#545e64',
         }
       },
       splitLine: {

@@ -1,13 +1,11 @@
 import React, { PureComponent } from "react";
 import { LeftPage, LeftTopBox, LeftCenterBox, LeftBottomBox } from "./style";
-import { ModuleTitle } from "../../style/globalStyledSet";
 import {
   BorderBox8,
-  BorderBox13,
-  DigitalFlop,
 } from "@jiaminghi/data-view-react";
 import CityOverview from "./charts/CityOverview";
 import InfectiousDisease from "./charts/InfectiousDisease";
+import TitleBox from "../../components/TitleBox/index"
 import { connect } from "dva";
 
 const images = [
@@ -29,23 +27,23 @@ class index extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      arr:[]
+      arr: []
     };
   }
 
-  componentWillReceiveProps(props){
+  UNSAFE_componentWillReceiveProps(props) {
     const { mapData } = props;
-    if (mapData&&mapData.length>0) {
+    if (mapData && mapData.length > 0) {
       const { confirmed, curConfirm, deaths, recovered } = mapData[0];
       this.setState({
-        arr:[confirmed, curConfirm, deaths, recovered]
+        arr: [confirmed, curConfirm, deaths, recovered]
       })
     }
   }
 
   render() {
-    const { mapData} = this.props;
-    const { config, style,arr } = this.state;
+    const { mapData } = this.props;
+    const { config, style, arr } = this.state;
 
 
     return (
@@ -54,15 +52,12 @@ class index extends PureComponent {
         <LeftTopBox>
           <BorderBox8 className="borderBox8">
             <div className="left-top">
-              <div className="font">疫情动态总览</div>
-              <img
-                src={require("../../assets/imgs/title-box.png")}
-                className="title-box"
-              />
+              <TitleBox title="疫情动态总览"></TitleBox>
+
               <div className="border"></div>
               <div className="border-reverse"></div>
               <div className="grid">
-                {arr.length>0 &&
+                {arr.length > 0 &&
                   images.map((item, i) => {
                     return (
                       <div className="grid-item">
@@ -80,16 +75,22 @@ class index extends PureComponent {
         </LeftTopBox>
         <LeftCenterBox>
           <BorderBox8 className="borderBox8">
-            <CityOverview />
+            <div className="left-center">
+                <TitleBox title="美国城市疫情概况"></TitleBox>
+                {
+                  mapData && mapData.length > 0 &&(<CityOverview data={mapData} />)
+                }
+            </div>
           </BorderBox8>
         </LeftCenterBox>
 
-        <LeftBottomBox>
-          <BorderBox8 className="borderBox8">
-            <InfectiousDisease />
-          </BorderBox8>
-        </LeftBottomBox>
-      </LeftPage>
+      <LeftBottomBox>
+        <BorderBox8 className="borderBox8">
+          <TitleBox title="Top5传染病"></TitleBox>
+          <InfectiousDisease />
+        </BorderBox8>
+      </LeftBottomBox>
+      </LeftPage >
     );
   }
 }

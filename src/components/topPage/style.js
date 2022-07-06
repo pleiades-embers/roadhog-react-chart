@@ -81,15 +81,3 @@ export const TopBox = styled.div`
     } // end title-box
   } // end top_box
 `;
-
-export const TimeBox = styled.div`
-  position: absolute;
-  right: 0.375rem;
-  top: 0.5rem;
-  text-align: right;
-  color: #fff;
-  h3{
-    font-size: 0.225rem;
-    color: ${TitleColor};
-  }
-`;

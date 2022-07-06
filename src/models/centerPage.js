@@ -20,17 +20,22 @@ export default {
   // 获取地图数据
   effects: {
     *getCenterPageData({ payload }, { call, put }) {
-      const res = yield call(postAreaUsa);
-      if (res.code===0) {
+      const areaUsa = yield call(postAreaUsa);
+      if (areaUsa.code===0) {
         yield put({
           type: 'setMapData',
-          payload: res.data,
+          payload: areaUsa.data,
         });
       } else {
         console.log(`获取地图数据失败`);
-      }
+      } 
     },
+
   },
+
+
+
+
 
   // 同步操作
   reducers: {

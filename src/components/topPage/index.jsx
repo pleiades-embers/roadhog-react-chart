@@ -5,7 +5,7 @@ import {
   Decoration6,
 } from '@jiaminghi/data-view-react';
 
-import { TopBox, TimeBox } from './style';
+import { TopBox } from './style';
 
 class index extends PureComponent {
   constructor(props) {
