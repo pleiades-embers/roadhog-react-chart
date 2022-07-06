@@ -1,5 +1,6 @@
 import request from '../utils/request';
 
+
 // 美国各州数据
 export const postAreaUsa = async (params={
   "type":"usa",

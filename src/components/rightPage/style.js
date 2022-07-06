@@ -15,7 +15,7 @@ margin-top: 0.25rem;
 .borderBox8 {
   width: inherit;
   height: inherit;
-  padding: 0.1875rem;
+  padding: 0.13rem;
   .left-top {
     width: 100%;
     height: 100%;
@@ -31,7 +31,7 @@ margin-top: 0.25rem;
 .borderBox8 {
   width: inherit;
   height: inherit;
-  padding: 0.1875rem;
+  padding: 0.13rem;
   .left-top {
     width: 100%;
     height: 100%;
@@ -47,7 +47,7 @@ margin-top: 0.25rem;
 .borderBox8 {
   width: inherit;
   height: inherit;
-  padding: 0.1875rem;
+  padding: 0.13rem;
   .left-top {
     width: 100%;
     height: 100%;

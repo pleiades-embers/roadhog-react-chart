@@ -18,7 +18,7 @@ class index extends PureComponent {
         <Map mapData={mapData}></Map>
         <CenterBottom>
         <BorderBox8  className="borderBox8">
-
+      
         </BorderBox8>
         </CenterBottom>
       </CenterPage>

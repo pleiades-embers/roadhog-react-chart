@@ -19,6 +19,9 @@ class index extends PureComponent {
         {/* 顶部图表 */}
         <LeftTopBox>
           <BorderBox8 className='borderBox8'>
+                
+
+
           </BorderBox8>
         </LeftTopBox>
         <LeftCenterBox>
