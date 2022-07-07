@@ -50,72 +50,7 @@ class index extends PureComponent {
             <TimeLineStyle>
             <Timeline>
               {message &&
-                [
-                  {
-                    id: 1,
-                    title: "猴痘出现！",
-                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
-                    date: "2022-06-29",
-                    city: "南非",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 3,
-                    title: "日本新冠确诊再次出现暴涨",
-                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
-                    date: "2022-06-28",
-                    city: "日本",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 1,
-                    title: "猴痘出现！",
-                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
-                    date: "2022-06-29",
-                    city: "南非",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 3,
-                    title: "日本新冠确诊再次出现暴涨",
-                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
-                    date: "2022-06-28",
-                    city: "日本",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 1,
-                    title: "猴痘出现！",
-                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
-                    date: "2022-06-29",
-                    city: "南非",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 3,
-                    title: "日本新冠确诊再次出现暴涨",
-                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
-                    date: "2022-06-28",
-                    city: "日本",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 1,
-                    title: "猴痘出现！",
-                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
-                    date: "2022-06-29",
-                    city: "南非",
-                    isRelease: "1"
-                  },
-                  {
-                    id: 3,
-                    title: "日本新冠确诊再次出现暴涨",
-                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
-                    date: "2022-06-28",
-                    city: "日本",
-                    isRelease: "1"
-                  }
-                ].map((item, index) => {
+            message.map((item, index) => {
                   return (
                     <TimelineItem
 
