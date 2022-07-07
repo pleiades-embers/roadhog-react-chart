@@ -1,61 +1,157 @@
-import React, { PureComponent } from 'react';
-import { CenterPage, CenterBottom } from './style';
-import Map from './charts/Map';
-import CenterTab from "./CenterTab/index"
+import React, { PureComponent } from "react";
+import { CenterPage, CenterBottom, TimeLineItemStyle,TimeLineStyle } from "./style";
+import Map from "./charts/Map";
+import CenterTab from "./CenterTab/index";
 import { BorderBox8 } from "@jiaminghi/data-view-react";
-import { connect } from 'dva';
-
+import { connect } from "dva";
+import TitleBox from "../TitleBox/index";
+import { Timeline } from "@arco-design/web-react";
+import "@arco-design/web-react/dist/css/arco.css";
+import leftPage from "../leftPage";
+const TimelineItem = Timeline.Item;
 class index extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      chartName:"America"
+      chartName: "America",
     };
   }
 
-
-
   render() {
-    const { detailsList, mapData,tabName, getArea,dispatch } = this.props;
-    if(!mapData){
-      return null
+    const { detailsList, mapData, getArea, dispatch, tabName, message } =
+      this.props;
+    if (!mapData) {
+      return null;
     }
-    const {chartName}=this.state;
+
+    const { chartName } = this.state;
     return (
       <CenterPage>
-        <CenterTab onClick={(v)=>{
-          this.setState({
-            chartName:v
-          })
-          const enumCountry={
-              ap:"ap",
-              Asia:"pr",
-              America:"usa"
-          }
-          dispatch({
-            type: 'centerPage/getCenterPageData',
-            payload:enumCountry[v]
-          });
-    
-        }}></CenterTab>
+        <CenterTab
+          onClick={(v) => {
+            this.setState({
+              chartName: v,
+            });
+            const enumCountry = {
+              ap: "ap",
+              Asia: "pr",
+              America: "usa",
+            };
+            dispatch({
+              type: "centerPage/getCenterPageData",
+              payload: enumCountry[v],
+            });
+          }}
+        ></CenterTab>
         <Map mapData={mapData} tabName={tabName} chartName={chartName}></Map>
         <CenterBottom>
-        <BorderBox8  className="borderBox8">
-      
-        </BorderBox8>
+          <BorderBox8 className="borderBox8">
+            <TitleBox big={"big"} title="传染病风险预警"></TitleBox>
+            <TimeLineStyle>
+            <Timeline>
+              {message &&
+                [
+                  {
+                    id: 1,
+                    title: "猴痘出现！",
+                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
+                    date: "2022-06-29",
+                    city: "南非",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 3,
+                    title: "日本新冠确诊再次出现暴涨",
+                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
+                    date: "2022-06-28",
+                    city: "日本",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 1,
+                    title: "猴痘出现！",
+                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
+                    date: "2022-06-29",
+                    city: "南非",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 3,
+                    title: "日本新冠确诊再次出现暴涨",
+                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
+                    date: "2022-06-28",
+                    city: "日本",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 1,
+                    title: "猴痘出现！",
+                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
+                    date: "2022-06-29",
+                    city: "南非",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 3,
+                    title: "日本新冠确诊再次出现暴涨",
+                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
+                    date: "2022-06-28",
+                    city: "日本",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 1,
+                    title: "猴痘出现！",
+                    content: "<p>猴痘出现在南非！幕后操作者竟是！</p>",
+                    date: "2022-06-29",
+                    city: "南非",
+                    isRelease: "1"
+                  },
+                  {
+                    id: 3,
+                    title: "日本新冠确诊再次出现暴涨",
+                    content: "<p>多次出现暴涨，背后的原因令人落泪！</p>",
+                    date: "2022-06-28",
+                    city: "日本",
+                    isRelease: "1"
+                  }
+                ].map((item, index) => {
+                  return (
+                    <TimelineItem
+
+                      key={item.id}
+                      dot={
+                        <img
+                          src={require(`../../assets/imgs/dot.png`)}
+                          className="dot"
+                        />
+                      }
+                    >
+                      <TimeLineItemStyle>
+                        <div>{item.date}</div>
+                        <div
+                          dangerouslySetInnerHTML={{ __html: item.content }}
+                        ></div>
+                      </TimeLineItemStyle>
+                    </TimelineItem>
+                  );
+                })}
+            </Timeline>
+            </TimeLineStyle>
+          </BorderBox8>
         </CenterBottom>
       </CenterPage>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     detailsList: state.centerPage.detailsList,
     mapData: state.centerPage.mapData,
-    tabName:state.centerPage.tabName
+    tabName: state.centerPage.tabName,
+    message: state.centerPage.message,
   };
 };
-
 
 export default connect(mapStateToProps)(index);

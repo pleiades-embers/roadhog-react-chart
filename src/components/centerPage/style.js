@@ -19,3 +19,37 @@ export const CenterBottom = styled.div`
   height: 3.63rem;
 
 `;
+
+
+export const TimeLineItemStyle=styled.div`
+  display: grid;
+  grid-template-columns: 1.42rem 1fr;
+  grid-template-rows: 1fr;
+  column-gap:0.36rem;
+  >div{
+    font-size: 0.22rem;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+`
+
+export const TimeLineStyle=styled.div`
+  height: 3.04rem;
+  overflow-y: scroll;
+  width: 10.63rem;
+  margin-left: 0.32rem;
+  ::-webkit-scrollbar  
+  {  
+      width: 0.04rem;  
+      height: 0.04rem;  
+      background-color: rgba(109, 224, 239, 1);  
+  }  
+  .arco-timeline{
+    margin-top:10px;
+    margin-left:10px;
+  }
+  .arco-timeline-item {
+    min-height: 30px;
+  }
+`

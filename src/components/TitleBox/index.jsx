@@ -9,12 +9,13 @@ export default class  TitleBox extends PureComponent{
         super(props)
     }
     render(){
+        const {title,big}=this.props
         return (
             <TitleBoxStyle>
-                <div className="font">{this.props.title}</div>
+                <div className={big?"font-big":"font"}>{title}</div>
                 <img
-                    src={require("../../assets/imgs/title-box.png")}
-                    className="title-box"
+                    src={require(`../../assets/imgs/title-box${big?"-"+big:""}.png`)}
+                    className={big?"title-box-big":"title-box"}
                 />
             </TitleBoxStyle>
         )

@@ -12,7 +12,7 @@ export const postAreaUsa = async (params) => {
   });
 };
 
-// 地区疫情
+// 各州数据
 export const getArea = async () => {
   return request('/api/epidemic/area').then(response => {
     return response.data;

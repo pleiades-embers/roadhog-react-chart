@@ -1,4 +1,4 @@
-import { postAreaUsa, getRank } from "../services/index";
+import { postAreaUsa, getRank ,getMessage} from "../services/index";
 export default {
   // 命名空间 (必填)
   namespace: "centerPage",
@@ -16,6 +16,9 @@ export default {
           });
           dispatch({
             type: "getRank",
+          });
+          dispatch({
+            type: "getMessage",
           });
         }
       });
@@ -35,8 +38,18 @@ export default {
         console.log(`获取传染病Top5失败`);
       }
     },
+    *getMessage({ payload }, { call, put }) {
+      const res = yield call(getMessage);
+      if (res.code === 0) {
+        yield put({
+          type: "setMessage",
+          payload: res.data,
+        });
+      } else {
+        console.log(`获取风险预警信息失败`);
+      }
+    },
     *getCenterPageData({ payload = "usa" }, { call, put }) {
-
       yield put({
         type: "setTabName",
         payload:payload,
@@ -63,6 +76,12 @@ export default {
       return {
         ...state,
         tabName:payload
+      };
+    },
+    setMessage(state, { payload }) {
+      return {
+        ...state,
+        message:payload
       };
     },
     setMapData(state, { payload }) {

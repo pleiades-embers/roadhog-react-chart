@@ -1,4 +1,5 @@
 import echarts from "echarts/lib/echarts";
+import dayjs from "dayjs"
 
 // 关联数据类别
 export const BrowseCategoriesOptions = (params) => ({
@@ -323,7 +324,7 @@ export const OfflinePortalOptions = (params) => ({
  */
 export const DiagnosisTrendOption = (params) => ({
   xAxis: {
-    data: ["06-07", "06-08", "06-09", "06-10", "06-11", "06-12", "06-13"],
+    data: params.map(item=> dayjs(item.dateTime).format("MM-DD")),
     axisLine: {
       lineStyle: {
         color: "#ccc",
@@ -339,15 +340,16 @@ export const DiagnosisTrendOption = (params) => ({
   },
   //控制图表占此容器的位置
   grid: {
-    bottom: 20,
-    left:50,
-    right:20,
+    top: 20,
+    bottom: 50,
+    left: 50,
+    right: 50,
   },
   series: [
     {
       name: "Sale",
       type: "bar",
-      data: [9800, 14180, 23500, 13500, 10500, 12500, 8800],
+      data: params.map(item=> item.increase),
       barWidth: "10px",
       itemStyle: {
         normal: {
@@ -372,9 +374,42 @@ export const DiagnosisTrendOption = (params) => ({
         },
       },
     },
+    {
+      name: "数量",
+      type: "line",
+      markLine: {
+        symbol: "none",
+        itemStyle: {
+          normal: {
+            borderWidth: 0,
+            lineStyle: {
+              type: "dashed",
+              color: "#EA3628",
+              width: 1,
+            },
+          },
+        },
+        label: {
+          position:'start',
+          formatter:'{c}',
+          normal: {
+            padding: 1,
+            fontSize: 12,
+            fontFamily: "Microsoft YaHei",
+            formatter: function (params) {
+              return "平均线";
+            },
+          },
+        },
+        data: [
+          {
+            yAxis: params.map(item=> item.increase).reduce((a,b) => Number(a) + Number(b), 0) / 5 ,
+          },
+        ],
+      },
+    },
   ],
 });
-
 
 /**
  * 实时各州数据概况
@@ -382,4 +417,4 @@ export const DiagnosisTrendOption = (params) => ({
 export const AreaScrollBoardOptions = (params) => ({
   header: params.header,
   data: params.data,
-})
+});

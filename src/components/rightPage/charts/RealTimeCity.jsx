@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import { AreaScrollBoardOptions } from './options';
-import { ScrollBoard } from '@jiaminghi/data-view-react';
+import React, { PureComponent } from "react";
+import { AreaScrollBoardOptions } from "./options";
+import { ScrollBoard } from "@jiaminghi/data-view-react";
 
 class RealTimeCity extends PureComponent {
   constructor(props) {
@@ -8,9 +8,9 @@ class RealTimeCity extends PureComponent {
     this.state = {
       config: {
         // 表头背景色
-        headerBGC: '#102c37',
+        headerBGC: 'rgba(60, 158, 179, 0.14)',
         // 宽度
-        columnWidth: [260, 200, 200,200],
+        columnWidth: [260, 200, 200, 200],
 
         // 表行数
         rowNum: 5,
@@ -19,30 +19,27 @@ class RealTimeCity extends PureComponent {
   }
 
   render() {
+    const { data } = this.props;
     const config = {
       ...this.state.config,
       ...AreaScrollBoardOptions({
-        header: ['首府/最大城市', '累计确诊', '治愈', '死亡'],
-        data: [
-          ['波士顿', '1473752', '1404983','20643'],
-          ['洛杉矶', '6325806', '5967132','74886'],
-          ['博伊西', '7014739', '6769446','88926'],
-          ['华盛顿', '5681025', '5542992','89898'],
-          ['芝加哥', '2960677', '2851863','89898'],
-          ['田纳西', '89898', '89898','89898'],
-        ],
-      },),
+        header: ['<span style="color:#6DE0EF;">首府/最大城市<span>', '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
+        data: data.map((item) => {
+          return [item.city_name, item.confirmed, item.recovered, item.deaths];
+        }),
+      }),
     };
 
     return (
       <div>
-            <ScrollBoard
-            config={config}
-            style={{
-              width: '5.65rem',
-              height: '2.93rem',
-              marginTop: '0.4rem',
-            }}></ScrollBoard>
+        <ScrollBoard
+          config={config}
+          style={{
+            width: "5.65rem",
+            height: "2.93rem",
+            marginTop: "0.1rem",
+          }}
+        ></ScrollBoard>
       </div>
     );
   }

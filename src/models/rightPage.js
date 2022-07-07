@@ -1,4 +1,4 @@
-import { getRightPageData } from '../services/index';
+import { getCity } from '../services/index';
 export default {
   // 命名空间 (必填)
   namespace: 'rightPage',
@@ -21,11 +21,12 @@ export default {
   // 异步请求
   effects: {
     *getRightPageData({ payload }, { call, put }) {
-      const data = yield call(getRightPageData);
-      if (data) {
+      const res = yield call(getCity);
+      
+      if (res.code===0) {
         yield put({
           type: 'setData',
-          payload: data,
+          payload: res.data,
         });
       } else {
         console.log(`获取右侧数据数据失败`);
@@ -35,8 +36,8 @@ export default {
 
   // 同步操作
   reducers: {
-    setData(state, action) {
-      return { ...state, ...action.payload };
+    setData(state, {payload}) {
+      return { ...state, data:payload };
     },
   },
 };

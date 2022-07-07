@@ -10,11 +10,13 @@ import 'zrender/lib/svg/svg';
 import { debounce } from './index'; // 一个节流函数
 import America from './map/US-all.json';
 import Asia from "./map/asia.json"
+import WorldPalestine from "./map/world-palestine.json"
 /**
  * 加载地图
  */
 echarts.registerMap("America", America);  
-echarts.registerMap("Asia", Asia);  
+// echarts.registerMap("Asia", Asia);  
+// echarts.registerMap("ap", WorldPalestine);  
 
 export default class Chart extends PureComponent {
   constructor(props) {

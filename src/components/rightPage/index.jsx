@@ -9,6 +9,7 @@ import DiagnosisTrend from "./charts/DiagnosisTrend"
 import RealTimeState from "./charts/RealTimeState"
 import RealTimeCity from "./charts/RealTimeCity"
 import { connect } from "dva";
+import TitleBox from "../TitleBox/index"
 import {
   RightPage,
   RightTopBox,
@@ -22,25 +23,34 @@ class index extends PureComponent {
     this.state = {};
   }
   render() {
-    const { offline, browseCategories, userIdentityCategory,realTimeState } = this.props;
-    console.log(offline,"offline")
+    const {data,mapData} = this.props;
+
     return (
       <RightPage>
         <RightTopBox>
           <BorderBox8 reverse="{true}" className="borderBox8">
-          <DiagnosisTrend/>
+            <TitleBox title="新增确诊趋势"></TitleBox>
+            {
+              mapData&&  <DiagnosisTrend data={mapData["usa"][0].sevenDatas} />
+            }
           </BorderBox8>
         </RightTopBox>
 
         <RightCenterBox>
           <BorderBox8 reverse="{true}" className="borderBox8">
-            <RealTimeState realTimeState={realTimeState}></RealTimeState>
+            <TitleBox title="实时各州数据概况"></TitleBox>
+            {
+              data&&(<RealTimeState data={data}></RealTimeState>)
+            }
           </BorderBox8>
         </RightCenterBox>
 
         <RightBottomBox>
           <BorderBox8 reverse="{true}" className="borderBox8">
-            <RealTimeCity></RealTimeCity>
+          <TitleBox title="实时首府及最大城市概况"></TitleBox>
+          {
+              data&&(<RealTimeCity data={data}></RealTimeCity>)
+            }
           </BorderBox8>
         </RightBottomBox>
       </RightPage>
@@ -50,10 +60,8 @@ class index extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    browseCategories: state.rightPage.browseCategories,
-    userIdentityCategory: state.rightPage.userIdentityCategory,
-    offline: state.rightPage.offline,
-    realTimeState:state.rightPage.realTimeState
+    data: state.rightPage.data,
+    mapData: state.centerPage.mapData,
   };
 };
 

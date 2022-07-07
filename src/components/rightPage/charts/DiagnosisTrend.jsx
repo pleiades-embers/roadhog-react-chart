@@ -7,12 +7,13 @@ class DiagnosisTrend extends PureComponent {
     super(props);
     this.state = {
       renderer: "canvas",
-      data: [],
     };
   }
 
   render() {
-    const { renderer, data } = this.state;
+    const { renderer } = this.state;
+    const {data}=this.props
+
     return (
       <div
         style={{
