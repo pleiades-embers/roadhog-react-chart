@@ -1,6 +1,7 @@
 import echarts from "echarts/lib/echarts";
 import "echarts/map/js/china";
-export const mapOptions = (params) => ({
+export const mapOptions = (params,chartName,itemStyle) => ({
+  
   // visualMap: {
   //   show: true,
   //   min: 0,
@@ -54,12 +55,12 @@ export const mapOptions = (params) => ({
  },
   series: [
     {
-      name: "America",
+      name: chartName,
       type: "map3D",
-      map: "America",
+      map: chartName,
 
       //数据源
-      data:[{name:"Montana", value: "21312312"},{name:"North Dakota",value:Math.round(Math.random() * 1000)},{name:"Kansas",value:99999999}],
+      data:params,
       boxWidth: 110, //三维地图的宽度
       boxDepth: 120, //地图倾斜度  正交投影失效
       regionHeight: 3, //地图厚度
@@ -72,11 +73,7 @@ export const mapOptions = (params) => ({
           backgroundColor: "rgba(0,0,0,0)", //透明度0清空文字背景
         },
       },
-      itemStyle: {
-        opacity: 0.9, // 透明度
-        borderWidth: 0.6, //分界线宽度
-        borderColor: "#207fce", //分界线颜色
-      },
+      ...itemStyle,
       groundplane: {
         show: false,
       },

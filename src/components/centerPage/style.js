@@ -10,11 +10,6 @@ export const CenterPage = styled.div`
 `;
 
 
-export const CenterTab = styled.div`
- width: 6.25rem;
-  height: 0.38rem;
-  margin-bottom:0.11rem;
-`;
 
 
 export const CenterBottom = styled.div`

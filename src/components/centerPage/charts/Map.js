@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, createRef } from "react";
 import Chart from "../../../utils/chart";
 import { mapOptions } from "./options";
 
@@ -15,11 +15,22 @@ class Map extends PureComponent {
     this.state = {
       renderer: "canvas",
     };
+    this.chartRef = createRef(null);
   }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if(this.props.chartName!==nextProps.chartName){
+      this.chartRef.current.chartClear()
+    }
+
+  }
+
+
 
   render() {
     const { renderer } = this.state;
-    const { mapData } = this.props;
+    const { mapData, chartName ,tabName} = this.props;
+
     return (
       <div
         style={{
@@ -28,8 +39,18 @@ class Map extends PureComponent {
           marginBottom: "0.31rem",
         }}
       >
-        {mapData ? (
-          <Chart renderer={renderer} option={mapOptions(mapData)} />
+        {mapData[tabName] ? (
+          <Chart
+            ref={this.chartRef}
+            renderer={renderer}
+            option={mapOptions(mapData[tabName], chartName, {
+              itemStyle: {
+                opacity: 0.9, // 透明度
+                borderWidth: 0.6, //分界线宽度
+                borderColor: "#207fce", //分界线颜色
+              },
+            })}
+          />
         ) : (
           ""
         )}

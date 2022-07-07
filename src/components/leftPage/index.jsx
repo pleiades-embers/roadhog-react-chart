@@ -32,9 +32,12 @@ class index extends PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(props) {
-    const { mapData } = props;
-    if (mapData && mapData.length > 0) {
-      const { confirmed, curConfirm, deaths, recovered } = mapData[0];
+    const { mapData,tabName } = props;
+    if(!mapData){
+      return null
+    }
+    if (mapData && mapData["usa"]?.length > 0) {
+      const { confirmed, curConfirm, deaths, recovered } = mapData["usa"][0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })
@@ -42,10 +45,14 @@ class index extends PureComponent {
   }
 
   render() {
-    const { mapData,rankData } = this.props;
+    const { mapData,tabName,rankData } = this.props;
+
+    if(!mapData){
+      return null
+    }
+
     const { config, style, arr } = this.state;
-
-
+    
     return (
       <LeftPage>
         {/* 顶部图表 */}
@@ -78,7 +85,7 @@ class index extends PureComponent {
             <div className="left-center">
                 <TitleBox title="美国城市疫情概况"></TitleBox>
                 {
-                  mapData && mapData.length > 0 &&(<CityOverview data={mapData} />)
+                  mapData["usa"] && mapData["usa"].length > 0 &&(<CityOverview data={mapData["usa"]} />)
                 }
             </div>
           </BorderBox8>
@@ -100,7 +107,8 @@ class index extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     mapData: state.centerPage.mapData,
-    rankData:state.centerPage.rankData
+    rankData:state.centerPage.rankData,
+    tabName:state.centerPage.tabName
   };
 };
 
