@@ -35,20 +35,25 @@ export const TimeLineItemStyle=styled.div`
 `
 
 export const TimeLineStyle=styled.div`
-  height: 3.04rem;
-  overflow-y: scroll;
   width: 10.63rem;
   margin-left: 0.32rem;
-  ::-webkit-scrollbar  
-  {  
-      width: 0.04rem;  
-      height: 0.04rem;  
-      background-color: rgba(109, 224, 239, 1);  
-  }  
   .arco-timeline{
     margin-top:10px;
-    margin-left:10px;
+    padding-left:10px;
+    height: 2.80rem;
+    overflow-y: auto;
+    ::-webkit-scrollbar  
+    {  
+        width: 0.04rem;  
+        background: #0A415B;
+    } 
+    ::-webkit-scrollbar-thumb   
+    {  
+      background: #6DE0EF;
+      opacity: 0.42;
+    }  
   }
+  
   .arco-timeline-item {
     min-height: 30px;
   }
