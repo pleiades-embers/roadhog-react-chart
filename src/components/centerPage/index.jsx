@@ -7,7 +7,6 @@ import { connect } from "dva";
 import TitleBox from "../TitleBox/index";
 import { Timeline } from "@arco-design/web-react";
 import "@arco-design/web-react/dist/css/arco.css";
-import leftPage from "../leftPage";
 const TimelineItem = Timeline.Item;
 class index extends PureComponent {
   constructor(props) {
@@ -18,7 +17,7 @@ class index extends PureComponent {
   }
 
   render() {
-    const { detailsList, mapData, getArea, dispatch, tabName, message } =
+    const { mapData, dispatch, tabName, message } =
       this.props;
     if (!mapData) {
       return null;
@@ -59,6 +58,9 @@ class index extends PureComponent {
                         <img
                           src={require(`../../assets/imgs/dot.png`)}
                           className="dot"
+                          style={{
+                            backgroundColor:"#0b1520"
+                          }}
                         />
                       }
                     >

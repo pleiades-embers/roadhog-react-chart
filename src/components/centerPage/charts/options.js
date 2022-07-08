@@ -1,5 +1,3 @@
-import echarts from "echarts/lib/echarts";
-import "echarts/map/js/china";
 export const mapOptions = (params,chartName,itemStyle) => ({
   
   // visualMap: {

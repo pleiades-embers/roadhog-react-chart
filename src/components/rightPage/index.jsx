@@ -1,10 +1,5 @@
 import React, { PureComponent } from "react";
 import { BorderBox8 } from "@jiaminghi/data-view-react";
-import BrowseCategories from "./charts/BrowseCategories";
-import UserIdentityCategory from "./charts/UserIdentityCategory";
-import OfflinePortal from "./charts/OfflinePortal";
-import Feedback from "./charts/Feedback";
-import { ModuleTitle } from "../../style/globalStyledSet";
 import DiagnosisTrend from "./charts/DiagnosisTrend"
 import RealTimeState from "./charts/RealTimeState"
 import RealTimeCity from "./charts/RealTimeCity"

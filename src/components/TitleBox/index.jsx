@@ -4,10 +4,6 @@ import { TitleBoxStyle } from "./style";
 
 
 export default class  TitleBox extends PureComponent{
-
-    constructor(props) {
-        super(props)
-    }
     render(){
         const {title,big}=this.props
         return (

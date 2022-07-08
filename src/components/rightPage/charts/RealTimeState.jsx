@@ -8,7 +8,7 @@ class RealTimeState extends PureComponent {
     this.state = {
       config: {
         // 表头背景色
-        headerBGC: '#3C9EB31A',
+        headerBGC: 'rgba(60, 158, 179, 0.14)',
         // 宽度
         columnWidth: [200, 200, 200, 200],
 

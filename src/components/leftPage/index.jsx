@@ -32,7 +32,7 @@ class index extends PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(props) {
-    const { mapData,tabName } = props;
+    const { mapData } = props;
     if(!mapData){
       return null
     }
@@ -45,13 +45,13 @@ class index extends PureComponent {
   }
 
   render() {
-    const { mapData,tabName,rankData } = this.props;
+    const { mapData,rankData } = this.props;
 
     if(!mapData){
       return null
     }
 
-    const { config, style, arr } = this.state;
+    const { arr } = this.state;
     
     return (
       <LeftPage>
