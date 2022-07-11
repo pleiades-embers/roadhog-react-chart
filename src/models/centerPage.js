@@ -57,7 +57,7 @@ export default {
 
       const areaUsa = yield call(postAreaUsa, {
         type: payload,
-        date: "2022-07-02",
+        // date: "2022-07-02",
       });
       if (areaUsa.code === 0) {
         yield put({
