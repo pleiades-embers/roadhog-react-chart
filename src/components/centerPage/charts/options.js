@@ -1,14 +1,11 @@
 export function mapOptions(params, chartName, itemStyle) {
-
-
   function mapData(data) {
-
-    return data.map(item=>{
+    return data.map((item) => {
       return {
         name: item.areaEn,
         value: item.curConfirm,
       };
-    })
+    });
   }
 
   //热力地图设置此处可设置热力地图的颜色和变化范围
@@ -18,23 +15,37 @@ export function mapOptions(params, chartName, itemStyle) {
       pieces: [
         {
           min: 100001,
-          color: "#eb3528",
-        },
-        {
-          min: 10000,
+          color: '#BB0000'
+      },
+      {
+          min: 50001,
           max: 100000,
-          color: "#cd5517",
-        },
-        {
-          min: 5000,
-          max: 9999,
-          color: "#eda537",
-        },
-        {
+          color: '#C62B2B' // #73240D
+      },
+      {
+          min: 25001,
+          max: 50000,
+          color: '#D25555'
+      },
+      {
+          min: 1001,
+          max: 25000,
+          color: '#DD8080'
+      },
+      {
+          min: 11,
+          max: 1000,
+          color: '#E8AAAA'
+      },
+      {
           min: 1,
-          max: 4999,
-          color: "#6be0ef",
-        },
+          max: 10,
+          color: '#F4D5D5'
+      },
+      {
+          value: 0,
+          color: 'white'
+      }
       ],
       orient: "vertical",
       itemWidth: 25,
@@ -50,7 +61,6 @@ export function mapOptions(params, chartName, itemStyle) {
     },
     tooltip: {
       show: true,
-
     },
     series: [
       {
@@ -60,7 +70,9 @@ export function mapOptions(params, chartName, itemStyle) {
 
         //数据源
         data:
-          chartName === "America" ? mapData(params[0].subList) : mapData(params),
+          chartName === "America"
+            ? mapData(params[0].subList)
+            : mapData(params),
         boxWidth: 110, //三维地图的宽度
         boxDepth: 120, //地图倾斜度  正交投影失效
         regionHeight: 3, //地图厚度
@@ -90,7 +102,7 @@ export function mapOptions(params, chartName, itemStyle) {
           //投影方式，默认为透视投影'perspective'，也支持设置为正交投影'orthographic'。
           projection: "orthographic",
           //正交投影此配置失效
-          // distance: 80,
+          distance: 80,
           orthographicSize: 80,
         },
       },

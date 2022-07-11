@@ -44,7 +44,7 @@ class CityOverview extends PureComponent {
 
     const sortData = sortBy(data[0].subList, function (o) {
       return -Number(o.confirmed);
-    });
+    }).splice(0,10);
     chartData = sortData.map((item, i) => {
       return {
         value: item.confirmed,
