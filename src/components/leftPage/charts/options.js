@@ -214,7 +214,7 @@ export const CityOverviewOption = (params) => ({
       name: '',
       type: 'pie',
       radius: ['30%', '74%'],
-      center: ['50%', '50%'],
+      center: ['50%', '49%'],
       roseType: 'area',
 
       labelLine: {
