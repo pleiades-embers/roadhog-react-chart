@@ -6,6 +6,7 @@ import {
 import CityOverview from "./charts/CityOverview";
 import InfectiousDisease from "./charts/InfectiousDisease";
 import TitleBox from "../../components/TitleBox/index"
+import {sortBy} from "lodash"
 import { connect } from "dva";
 
 const images = [
@@ -31,13 +32,24 @@ class index extends PureComponent {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(props) {
-    const { mapData } = props;
+  UNSAFE_componentWillReceiveProps(prevProps) {
+    
+    const { mapData ,tabName} = prevProps;
     if(!mapData){
       return null
     }
-    if (mapData && mapData["usa"]?.length > 0) {
+    if (mapData && tabName=="usa") {
       const { confirmed, curConfirm, deaths, recovered } = mapData["usa"][0];
+      this.setState({
+        arr: [confirmed, curConfirm, deaths, recovered]
+      })
+    }else if("pr" in mapData && tabName=="pr"){
+      const { confirmed, curConfirm, deaths, recovered }=sortBy(mapData["pr"], function(o) { return -Number(o.confirmed) })[0];
+      this.setState({
+        arr: [confirmed, curConfirm, deaths, recovered]
+      })
+    }else if("ap" in mapData && tabName=="ap"){
+      const { confirmed, curConfirm, deaths, recovered }=sortBy(mapData["ap"], function(o) { return -Number(o.confirmed) })[0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })

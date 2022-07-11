@@ -338,16 +338,19 @@ export const DiagnosisTrendOption = (params) => ({
       },
     },
   },
+  tooltip: {
+    trigger: "axis",
+  },
   //控制图表占此容器的位置
   grid: {
     top: 20,
     bottom: 50,
-    left: 50,
+    left: 60,
     right: 50,
   },
   series: [
     {
-      name: "Sale",
+      name: "感染人数",
       type: "bar",
       data: params.map(item=> item.increase),
       barWidth: "10px",

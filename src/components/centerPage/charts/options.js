@@ -6,7 +6,7 @@ export function mapOptions(params, chartName, itemStyle) {
     return data.map(item=>{
       return {
         name: item.areaEn,
-        value: item.confirmed,
+        value: item.curConfirm,
       };
     })
   }
@@ -50,10 +50,11 @@ export function mapOptions(params, chartName, itemStyle) {
     },
     tooltip: {
       show: true,
+
     },
     series: [
       {
-        name: chartName,
+        name: "确诊人数",
         type: "map3D",
         map: chartName,
 

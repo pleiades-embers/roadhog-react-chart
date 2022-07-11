@@ -49,7 +49,7 @@ class CityOverview extends PureComponent {
       return {
         value: item.confirmed,
         name: item.area,
-        ...(i <= 5 ? {
+        ...(i <= 10 ? {
           label: {
             normal: {
               fontSize: 12,

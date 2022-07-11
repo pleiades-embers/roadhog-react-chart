@@ -25,7 +25,7 @@ class RealTimeState extends PureComponent {
       ...AreaScrollBoardOptions({
         header: ['<span style="color:#6DE0EF;">州<span>', '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
         data: data.map(item => {
-          return [item.state_name, item.confirmed, item.recovered, item.deaths]
+          return [item.area, item.confirmed, item.recovered, item.deaths]
         }),
       }, ),
     };

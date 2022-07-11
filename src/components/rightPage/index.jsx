@@ -5,6 +5,7 @@ import RealTimeState from "./charts/RealTimeState"
 import RealTimeCity from "./charts/RealTimeCity"
 import { connect } from "dva";
 import TitleBox from "../TitleBox/index"
+import {sortBy} from "lodash"
 import {
   RightPage,
   RightTopBox,
@@ -15,18 +16,42 @@ import {
 class index extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      chartData: null
+    };
+  }
+  UNSAFE_componentWillReceiveProps(prevProps) {
+    
+    const { mapData ,tabName} = prevProps;
+
+    if(!mapData){
+      return null
+    }
+    if (mapData && tabName=="usa") {
+      this.setState({
+        chartData: mapData["usa"][0].sevenDatas
+      })
+    }else if("pr" in mapData && tabName=="pr"){
+     ;
+      this.setState({
+        chartData:sortBy(mapData["pr"], function(o) { return -Number(o.confirmed) })[0].sevenDatas
+      })
+    }else if("ap" in mapData && tabName=="ap"){
+      this.setState({
+        chartData: sortBy(mapData["ap"], function(o) { return -Number(o.confirmed) })[0].sevenDatas
+      })
+    }
   }
   render() {
     const {data,mapData} = this.props;
-
+    const {chartData}=this.state
     return (
       <RightPage>
         <RightTopBox>
           <BorderBox8 reverse="{true}" className="borderBox8">
             <TitleBox title="新增确诊趋势"></TitleBox>
             {
-              mapData&&  <DiagnosisTrend data={mapData["usa"][0].sevenDatas} />
+              chartData&&<DiagnosisTrend data={chartData} />
             }
           </BorderBox8>
         </RightTopBox>
@@ -35,7 +60,7 @@ class index extends PureComponent {
           <BorderBox8 reverse="{true}" className="borderBox8">
             <TitleBox title="实时各州数据概况"></TitleBox>
             {
-              data&&(<RealTimeState data={data}></RealTimeState>)
+              mapData&&(<RealTimeState data={mapData["usa"][0].subList}></RealTimeState>)
             }
           </BorderBox8>
         </RightCenterBox>
@@ -57,6 +82,7 @@ const mapStateToProps = (state) => {
   return {
     data: state.rightPage.data,
     mapData: state.centerPage.mapData,
+    tabName: state.centerPage.tabName,
   };
 };
 

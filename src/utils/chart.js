@@ -15,8 +15,8 @@ import WorldPalestine from "./map/world-palestine.json"
  * 加载地图
  */
 echarts.registerMap("America", America);  
-echarts.registerMap("Asia", Asia);  
-echarts.registerMap("ap", WorldPalestine);  
+echarts.registerMap("Asia",WorldPalestine);  
+echarts.registerMap("ap",Asia );  
 
 export default class Chart extends PureComponent {
   constructor(props) {

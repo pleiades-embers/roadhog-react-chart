@@ -8,7 +8,7 @@ export default class CenterTab extends PureComponent {
     this.state = {
       btnGroup: [
         { name: "邻国", value: "ap", select: false },
-        { name: "亚太", value: "Asia", select: false },
+        { name: "环太", value: "Asia", select: false },
         { name: "美国", value: "America", select: true },
       ],
     };
