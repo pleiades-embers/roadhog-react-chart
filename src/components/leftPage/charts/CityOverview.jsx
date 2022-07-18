@@ -42,13 +42,13 @@ class CityOverview extends PureComponent {
 
     let chartData = [];
 
-    const sortData = sortBy(data[0].subList, function (o) {
+    const sortData = sortBy(data, function (o) {
       return -Number(o.confirmed);
     }).splice(0,20);
     chartData = sortData.map((item, i) => {
       return {
         value: item.confirmed,
-        name: item.area,
+        name: item.city_name,
         ...(i <= 10 ? {
           label: {
             normal: {

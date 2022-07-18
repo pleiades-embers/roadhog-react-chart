@@ -57,7 +57,7 @@ class index extends PureComponent {
   }
 
   render() {
-    const { mapData,rankData } = this.props;
+    const { mapData,rankData ,data} = this.props;
 
     if(!mapData){
       return null
@@ -97,7 +97,7 @@ class index extends PureComponent {
             <div className="left-center">
                 <TitleBox title="美国城市疫情概况"></TitleBox>
                 {
-                  mapData["usa"] && mapData["usa"].length > 0 &&(<CityOverview data={mapData["usa"]} />)
+                  data&& data.length > 0 &&(<CityOverview data={data} />)
                 }
             </div>
           </BorderBox8>
@@ -120,7 +120,8 @@ const mapStateToProps = (state) => {
   return {
     mapData: state.centerPage.mapData,
     rankData:state.centerPage.rankData,
-    tabName:state.centerPage.tabName
+    tabName:state.centerPage.tabName,
+    data:state.rightPage.data
   };
 };
 
