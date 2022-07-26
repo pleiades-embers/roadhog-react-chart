@@ -69,7 +69,7 @@ class index extends PureComponent {
       <LeftPage>
         {/* 顶部图表 */}
         <LeftTopBox>
-          <BorderBox8 className="borderBox8">
+          <BorderBox8 className="borderBox8" dur="0">
             <div className="left-top">
               <TitleBox title="疫情动态总览"></TitleBox>
 
@@ -93,7 +93,7 @@ class index extends PureComponent {
           </BorderBox8>
         </LeftTopBox>
         <LeftCenterBox>
-          <BorderBox8 className="borderBox8">
+          <BorderBox8 className="borderBox8" dur="0">
             <div className="left-center">
                 <TitleBox title="美国城市疫情概况"></TitleBox>
                 {
@@ -104,7 +104,7 @@ class index extends PureComponent {
         </LeftCenterBox>
 
       <LeftBottomBox>
-        <BorderBox8 className="borderBox8">
+        <BorderBox8 className="borderBox8" dur="0">
           <TitleBox title="Top5传染病"></TitleBox>
           {
             rankData && rankData.length > 0 &&(<InfectiousDisease data={rankData} />)

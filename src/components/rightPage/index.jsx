@@ -48,7 +48,7 @@ class index extends PureComponent {
     return (
       <RightPage>
         <RightTopBox>
-          <BorderBox8 reverse="{true}" className="borderBox8">
+          <BorderBox8 reverse="{true}" className="borderBox8" dur="0">
             <TitleBox title="新增确诊趋势"></TitleBox>
             {
               chartData&&<DiagnosisTrend data={chartData} />
@@ -57,7 +57,7 @@ class index extends PureComponent {
         </RightTopBox>
 
         <RightCenterBox>
-          <BorderBox8 reverse="{true}" className="borderBox8">
+          <BorderBox8 reverse="{true}" className="borderBox8" dur="0">
             <TitleBox title="实时各州数据概况"></TitleBox>
             {
               mapData&&(<RealTimeState data={mapData["usa"][0].subList}></RealTimeState>)
@@ -66,7 +66,7 @@ class index extends PureComponent {
         </RightCenterBox>
 
         <RightBottomBox>
-          <BorderBox8 reverse="{true}" className="borderBox8">
+          <BorderBox8 reverse="{true}" className="borderBox8" dur="0">
           <TitleBox title="实时首府及最大城市概况"></TitleBox>
           {
               data&&(<RealTimeCity data={data}></RealTimeCity>)

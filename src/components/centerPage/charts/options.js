@@ -16,7 +16,7 @@ export function mapOptions(params, chartName, itemStyle) {
       pieces: [
         {
           min: 100001,
-          color: '#BB0000'
+          color: '#BB0000',
       },
       {
           min: 50001,
@@ -26,17 +26,17 @@ export function mapOptions(params, chartName, itemStyle) {
       {
           min: 25001,
           max: 50000,
-          color: '#C62B2B'
+          color: '#C62B2B',
       },
       {
           min: 1001,
           max: 25000,
-          color: '#D25555'
+          color: '#D25555',
       },
       {
           min: 3001,
           max: 10000,
-          color: '#d0513c'
+          color: '#d0513c',
       },
       {
         min: 501,

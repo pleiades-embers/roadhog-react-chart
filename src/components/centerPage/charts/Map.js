@@ -45,7 +45,7 @@ class Map extends PureComponent {
             renderer={renderer}
             option={mapOptions(mapData[tabName], chartName, {
               itemStyle: {
-                opacity: 0.9, // 透明度
+                opacity: 1, // 透明度
                 borderWidth: 0.6, //分界线宽度
                 borderColor: "#207fce", //分界线颜色
               },

@@ -44,7 +44,7 @@ class index extends PureComponent {
         ></CenterTab>
         <Map mapData={mapData} tabName={tabName} chartName={chartName}></Map>
         <CenterBottom>
-          <BorderBox8 className="borderBox8">
+          <BorderBox8 className="borderBox8" dur="0">
             <TitleBox big={"big"} title="传染病风险预警"></TitleBox>
             <TimeLineStyle>
             <Timeline>
