@@ -17,13 +17,13 @@ class InfectiousDisease extends PureComponent {
     let value = [];
     let indicator=[]
     value=data.map(item=>{
-        return item.weight
+        return item.reportNum
     })
 
     indicator=data.map(item=>{
         return {
-            name:item.name,
-            max:10
+            name:item.diseaseNameCn,
+            max:100
         }
     })
 

@@ -12,7 +12,7 @@ export default {
       return history.listen((location, action) => {
         // 参数可以直接简写成{pathname}
         if (location.pathname === '/') {
-          dispatch({ type: 'getLeftPageData' });
+          // dispatch({ type: 'getLeftPageData' });
         }
       });
     },

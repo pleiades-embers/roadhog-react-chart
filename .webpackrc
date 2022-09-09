@@ -1,7 +1,7 @@
 {
   "proxy": {
     "/api": {
-        "target": "http://49.235.80.54:81",
+        "target": "http://47.100.208.92:81",
         "changeOrigin": true
       }
   }

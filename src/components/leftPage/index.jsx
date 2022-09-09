@@ -58,11 +58,10 @@ class index extends PureComponent {
 
   render() {
     const { mapData,rankData ,data} = this.props;
-
     if(!mapData){
       return null
     }
-
+    console.log(data,"data")
     const { arr } = this.state;
     
     return (

@@ -25,7 +25,7 @@ class RealTimeCity extends PureComponent {
       ...AreaScrollBoardOptions({
         header: ['<span style="color:#6DE0EF;">首府/最大城市<span>', '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
         data: data.map((item) => {
-          return [item.city_name, item.confirmed, item.recovered, item.deaths];
+          return [item.cityNameCn, item.cumulativeConfirmed, item.cumulativeCures, item.cumulativeDeaths];
         }),
       }),
     };

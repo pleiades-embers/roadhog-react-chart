@@ -22,11 +22,10 @@ export default {
   effects: {
     *getRightPageData({ payload }, { call, put }) {
       const res = yield call(getCity);
-      
       if (res.code===0) {
         yield put({
           type: 'setData',
-          payload: res.data,
+          payload: res.rows,
         });
       } else {
         console.log(`获取右侧数据数据失败`);

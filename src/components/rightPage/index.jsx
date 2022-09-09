@@ -27,16 +27,16 @@ class index extends PureComponent {
     if(!mapData){
       return null
     }
-    if (mapData && tabName=="usa") {
+    if (mapData && tabName==="usa") {
       this.setState({
         chartData: mapData["usa"][0].sevenDatas
       })
-    }else if("pr" in mapData && tabName=="pr"){
+    }else if("pr" in mapData && tabName==="pr"){
      ;
       this.setState({
         chartData:sortBy(mapData["pr"], function(o) { return -Number(o.confirmed) })[0].sevenDatas
       })
-    }else if("ap" in mapData && tabName=="ap"){
+    }else if("ap" in mapData && tabName==="ap"){
       this.setState({
         chartData: sortBy(mapData["ap"], function(o) { return -Number(o.confirmed) })[0].sevenDatas
       })

@@ -43,12 +43,12 @@ class CityOverview extends PureComponent {
     let chartData = [];
 
     const sortData = sortBy(data, function (o) {
-      return -Number(o.confirmed);
+      return -Number(o.cumulativeConfirmed);
     }).splice(0,20);
     chartData = sortData.map((item, i) => {
       return {
-        value: item.confirmed,
-        name: item.city_name,
+        value: item.cumulativeConfirmed,
+        name: item.cityNameCn,
         ...(i <= 10 ? {
           label: {
             normal: {

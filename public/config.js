@@ -1,3 +1,3 @@
 window.global = {
-    baseUrl:'http://49.235.80.54:81',
+    baseUrl:'http://47.100.208.92:81',
 }

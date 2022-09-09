@@ -19,6 +19,10 @@ export default {
           });
           dispatch({
             type: "getMessage",
+            payload:{
+              "pageNum": 1,
+              "pageSize": 30
+            }
           });
         }
       });
@@ -32,18 +36,18 @@ export default {
       if (rank.code === 0) {
         yield put({
           type: "setRankData",
-          payload: rank.data,
+          payload: rank.rows,
         });
       } else {
         console.log(`获取传染病Top5失败`);
       }
     },
     *getMessage({ payload }, { call, put }) {
-      const res = yield call(getMessage);
+      const res = yield call(getMessage,payload);
       if (res.code === 0) {
         yield put({
           type: "setMessage",
-          payload: res.data,
+          payload: res.rows,
         });
       } else {
         console.log(`获取风险预警信息失败`);

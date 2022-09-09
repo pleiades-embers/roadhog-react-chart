@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { CenterPage, CenterBottom, TimeLineItemStyle,TimeLineStyle } from "./style";
+import { CenterPage, CenterBottom, TimeLineItemStyle, TimeLineStyle } from "./style";
 import Map from "./charts/Map";
 import CenterTab from "./CenterTab/index";
 import { BorderBox8 } from "@jiaminghi/data-view-react";
@@ -28,6 +28,9 @@ class index extends PureComponent {
       <CenterPage>
         <CenterTab
           onClick={(v) => {
+            if (v === "ap") {
+              return false
+            }
             this.setState({
               chartName: v,
             });
@@ -47,33 +50,35 @@ class index extends PureComponent {
           <BorderBox8 className="borderBox8" dur="0">
             <TitleBox big={"big"} title="传染病风险预警"></TitleBox>
             <TimeLineStyle>
-            <Timeline>
-              {message &&
-            message.map((item, index) => {
-                  return (
-                    <TimelineItem
+              <Timeline>
+                {message &&
+                  message.map((item, index) => {
+                    return (
+                      <TimelineItem
 
-                      key={item.id}
-                      dot={
-                        <img
-                          src={require(`../../assets/imgs/dot.png`)}
-                          className="dot"
-                          style={{
-                            backgroundColor:"#0b1520"
-                          }}
-                        />
-                      }
-                    >
-                      <TimeLineItemStyle>
-                        <div>{item.date}</div>
-                        <div
-                          dangerouslySetInnerHTML={{ __html: item.content }}
-                        ></div>
-                      </TimeLineItemStyle>
-                    </TimelineItem>
-                  );
-                })}
-            </Timeline>
+                        key={item.id}
+                        dot={
+                          <img
+                            src={require(`../../assets/imgs/dot.png`)}
+                            className="dot"
+                            style={{
+                              backgroundColor: "#0b1520"
+                            }}
+                          />
+                        }
+                      >
+                        <a href={item.newsLink}>
+                        <TimeLineItemStyle>
+                          <div>{item.newsTime}</div>
+                          <div
+                            dangerouslySetInnerHTML={{ __html: item.newsTitleCn }}
+                          ></div>
+                        </TimeLineItemStyle>
+                        </a>
+                      </TimelineItem>
+                    );
+                  })}
+              </Timeline>
             </TimeLineStyle>
           </BorderBox8>
         </CenterBottom>

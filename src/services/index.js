@@ -3,9 +3,9 @@ import request from '../utils/request';
 
 // 美国各州数据
 export const postAreaUsa = async (params) => {
-  return request('/api/epidemic/area',{
+  return request('/api/epidemic/area', {
     method: 'POST',
-    mode:"cors",
+    mode: "cors",
     body: JSON.stringify(params),
   }).then(response => {
     return response.data;
@@ -21,14 +21,19 @@ export const getArea = async () => {
 
 // 城市数据概况
 export const getCity = async () => {
-  return request('/api/epidemic/city').then(response => {
+  return request('/api/epidemic/arCityData').then(response => {
     return response.data;
   });
 };
 
 //风险预警信息
-export const getMessage = async () => {
-  return request('/api/epidemic/message').then(response => {
+export const getMessage = async (params) => {
+  return request('/api/epidemic/message', {
+    method: 'POST',
+    mode: "cors",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(params),
+  }).then(response => {
     return response.data;
   });
 };
