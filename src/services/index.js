@@ -21,6 +21,11 @@ export const getArea = async () => {
 
 // 城市数据概况
 export const getCity = async () => {
+  return request('/api/epidemic/usCityData').then(response => {
+    return response.data;
+  });
+};
+export const getArCity = async () => {
   return request('/api/epidemic/arCityData').then(response => {
     return response.data;
   });

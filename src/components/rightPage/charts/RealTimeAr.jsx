@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { AreaScrollBoardOptions } from './options';
 import { ScrollBoard } from '@jiaminghi/data-view-react';
 
-class RealTimeState extends PureComponent {
+class RealTimeAr extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,9 +23,9 @@ class RealTimeState extends PureComponent {
     const config = {
       ...this.state.config,
       ...AreaScrollBoardOptions({
-        header: [`<span style="color:#6DE0EF;">州<span>`, '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
+        header: [`<span style="color:#6DE0EF;">国<span>`, '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
         data: data.map(item => {
-          return [item.area, item.confirmed, item.recovered, item.deaths]
+            return [item.countryNameCn, item.cumulativeConfirmed, item.cumulativeCures, item.cumulativeDeaths];
         }),
       }, ),
     };
@@ -44,4 +44,4 @@ class RealTimeState extends PureComponent {
   }
 }
 
-export default RealTimeState;
+export default RealTimeAr;

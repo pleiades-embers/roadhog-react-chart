@@ -6,7 +6,8 @@ import {
 import CityOverview from "./charts/CityOverview";
 import InfectiousDisease from "./charts/InfectiousDisease";
 import TitleBox from "../../components/TitleBox/index"
-import {sortBy} from "lodash"
+import RealTimeCity from "../rightPage/charts/RealTimeCity"
+import { sortBy } from "lodash"
 import { connect } from "dva";
 
 const images = [
@@ -33,23 +34,23 @@ class index extends PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
-    
-    const { mapData ,tabName} = prevProps;
-    if(!mapData){
+
+    const { mapData, tabName } = prevProps;
+    if (!mapData) {
       return null
     }
-    if (mapData && tabName=="usa") {
+    if (mapData && tabName == "usa") {
       const { confirmed, curConfirm, deaths, recovered } = mapData["usa"][0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })
-    }else if("pr" in mapData && tabName=="pr"){
-      const { confirmed, curConfirm, deaths, recovered }=sortBy(mapData["pr"], function(o) { return -Number(o.confirmed) })[0];
+    } else if ("pr" in mapData && tabName == "pr") {
+      const { confirmed, curConfirm, deaths, recovered } = sortBy(mapData["pr"], function (o) { return -Number(o.confirmed) })[0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })
-    }else if("ap" in mapData && tabName=="ap"){
-      const { confirmed, curConfirm, deaths, recovered }=sortBy(mapData["ap"], function(o) { return -Number(o.confirmed) })[0];
+    } else if ("ap" in mapData && tabName == "ap") {
+      const { confirmed, curConfirm, deaths, recovered } = sortBy(mapData["ap"], function (o) { return -Number(o.confirmed) })[0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })
@@ -57,13 +58,12 @@ class index extends PureComponent {
   }
 
   render() {
-    const { mapData,rankData ,data} = this.props;
-    if(!mapData){
+    const { mapData, rankData, data,tabName ,data2} = this.props;
+    if (!mapData) {
       return null
     }
-    console.log(data,"data")
     const { arr } = this.state;
-    
+
     return (
       <LeftPage>
         {/* 顶部图表 */}
@@ -93,23 +93,30 @@ class index extends PureComponent {
         </LeftTopBox>
         <LeftCenterBox>
           <BorderBox8 className="borderBox8" dur="0">
-            <div className="left-center">
-                <TitleBox title="美国城市疫情概况"></TitleBox>
-                {
-                  data&& data.length > 0 &&(<CityOverview data={data} />)
-                }
-            </div>
+
+
+            {tabName === "usa" ? (<div className="left-center">
+              <TitleBox title="美国城市疫情概况"></TitleBox>
+              {
+                data && data.length > 0 && (<CityOverview data={data} />)
+              }
+            </div>) : (<>
+              <TitleBox title="环太实时州"></TitleBox>
+              {
+                data2 && (<RealTimeCity data={data2} title="州" fields={["stateNameCn", "newConfirmed", "newCures", "newDeaths"]}></RealTimeCity>)
+              }
+            </>)}
           </BorderBox8>
         </LeftCenterBox>
 
-      <LeftBottomBox>
-        <BorderBox8 className="borderBox8" dur="0">
-          <TitleBox title="Top5传染病"></TitleBox>
-          {
-            rankData && rankData.length > 0 &&(<InfectiousDisease data={rankData} />)
-          }
-        </BorderBox8>
-      </LeftBottomBox>
+        <LeftBottomBox>
+          <BorderBox8 className="borderBox8" dur="0">
+            <TitleBox title="Top5传染病"></TitleBox>
+            {
+              rankData && rankData.length > 0 && (<InfectiousDisease data={rankData} />)
+            }
+          </BorderBox8>
+        </LeftBottomBox>
       </LeftPage >
     );
   }
@@ -118,9 +125,10 @@ class index extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     mapData: state.centerPage.mapData,
-    rankData:state.centerPage.rankData,
-    tabName:state.centerPage.tabName,
-    data:state.rightPage.data
+    rankData: state.centerPage.rankData,
+    tabName: state.centerPage.tabName,
+    data: state.rightPage.data,
+    data2: state.rightPage.data2
   };
 };
 

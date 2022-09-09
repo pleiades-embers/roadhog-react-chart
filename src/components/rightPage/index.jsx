@@ -3,6 +3,7 @@ import { BorderBox8 } from "@jiaminghi/data-view-react";
 import DiagnosisTrend from "./charts/DiagnosisTrend"
 import RealTimeState from "./charts/RealTimeState"
 import RealTimeCity from "./charts/RealTimeCity"
+import RealTimeAr from "./charts/RealTimeAr"
 import { connect } from "dva";
 import TitleBox from "../TitleBox/index"
 import {sortBy} from "lodash"
@@ -43,7 +44,7 @@ class index extends PureComponent {
     }
   }
   render() {
-    const {data,mapData} = this.props;
+    const {data,mapData,tabName,data2} = this.props;
     const {chartData}=this.state
     return (
       <RightPage>
@@ -58,19 +59,34 @@ class index extends PureComponent {
 
         <RightCenterBox>
           <BorderBox8 reverse="{true}" className="borderBox8" dur="0">
-            <TitleBox title="实时各州数据概况"></TitleBox>
+            {tabName==="usa"?(       <>
+            <TitleBox title="美国实时各州数据概况"></TitleBox>
             {
               mapData&&(<RealTimeState data={mapData["usa"][0].subList}></RealTimeState>)
             }
+            </>):(  <>
+            <TitleBox title="环太实时各国数据"></TitleBox>
+            {
+              data2&&(<RealTimeAr data={data2}></RealTimeAr>)
+            }
+            </>)}
+      
           </BorderBox8>
         </RightCenterBox>
 
         <RightBottomBox>
           <BorderBox8 reverse="{true}" className="borderBox8" dur="0">
-          <TitleBox title="实时首府及最大城市概况"></TitleBox>
-          {
+          {tabName==="usa"?(<>
+            <TitleBox title="美国实时首府及最大城市概况"></TitleBox>
+            {
               data&&(<RealTimeCity data={data}></RealTimeCity>)
+            }</>):(  <>
+            <TitleBox title="环太实时首府"></TitleBox>
+            {
+              data2&&(<RealTimeCity data={data2} title="首府" fields={["cityNameCn", "cumulativeConfirmed", "cumulativeCures", "cumulativeDeaths"]}></RealTimeCity>)
             }
+            </>)}
+       
           </BorderBox8>
         </RightBottomBox>
       </RightPage>
@@ -81,6 +97,7 @@ class index extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     data: state.rightPage.data,
+    data2: state.rightPage.data2,
     mapData: state.centerPage.mapData,
     tabName: state.centerPage.tabName,
   };

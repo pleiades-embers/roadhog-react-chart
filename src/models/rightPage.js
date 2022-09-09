@@ -1,4 +1,4 @@
-import { getCity } from '../services/index';
+import { getCity,getArCity } from '../services/index';
 export default {
   // 命名空间 (必填)
   namespace: 'rightPage',
@@ -22,10 +22,15 @@ export default {
   effects: {
     *getRightPageData({ payload }, { call, put }) {
       const res = yield call(getCity);
-      if (res.code===0) {
+      const res2 = yield call(getArCity);
+      if (res.code===0&&res2.code===0) {
         yield put({
           type: 'setData',
           payload: res.rows,
+        });
+        yield put({
+          type: 'setData2',
+          payload: res2.rows,
         });
       } else {
         console.log(`获取右侧数据数据失败`);
@@ -37,6 +42,9 @@ export default {
   reducers: {
     setData(state, {payload}) {
       return { ...state, data:payload };
+    },
+    setData2(state, {payload}) {
+      return { ...state, data2:payload };
     },
   },
 };

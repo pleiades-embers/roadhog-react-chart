@@ -19,13 +19,13 @@ class RealTimeCity extends PureComponent {
   }
 
   render() {
-    const { data } = this.props;
+    const { data ,title="首府/最大城市",fields=["stateNameCn", "cumulativeConfirmed", "cumulativeCures", "cumulativeDeaths"]} = this.props;
     const config = {
       ...this.state.config,
       ...AreaScrollBoardOptions({
-        header: ['<span style="color:#6DE0EF;">首府/最大城市<span>', '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
+        header: [`<span style="color:#6DE0EF;">${title}<span>`, '<span style="color:#6DE0EF;">累计确诊<span>', '<span style="color:#6DE0EF;">治愈<span>', '<span style="color:#6DE0EF;">死亡<span>'],
         data: data.map((item) => {
-          return [item.cityNameCn, item.cumulativeConfirmed, item.cumulativeCures, item.cumulativeDeaths];
+          return fields.map(item2=>item[item2]);
         }),
       }),
     };
