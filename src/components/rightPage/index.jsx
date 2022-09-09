@@ -67,7 +67,7 @@ class index extends PureComponent {
             </>):(  <>
             <TitleBox title="环太实时各国数据"></TitleBox>
             {
-              data2&&(<RealTimeAr data={data2}></RealTimeAr>)
+              mapData["pr"]?.length>0&&(<RealTimeCity data={mapData["pr"]} title="国家" fields={["area", "confirmed", "recovered", "deaths"]} ></RealTimeCity>)
             }
             </>)}
       
