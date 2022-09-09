@@ -35,7 +35,7 @@ class index extends PureComponent {
     }else if("pr" in mapData && tabName==="pr"){
      ;
       this.setState({
-        chartData:sortBy(mapData["pr"], function(o) { return -Number(o.confirmed) })[0].sevenDatas
+        chartData:sortBy(mapData["pr"].filter(item=>item.area!=="美国"), function(o) { return -Number(o.confirmed) })[0].sevenDatas
       })
     }else if("ap" in mapData && tabName==="ap"){
       this.setState({

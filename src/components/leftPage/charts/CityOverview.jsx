@@ -38,7 +38,7 @@ class CityOverview extends PureComponent {
   }
 
   getChartData() {
-    const { data } = this.props;
+    const { data,tooltipName="stateNameCn"} = this.props;
 
     let chartData = [];
 
@@ -48,7 +48,7 @@ class CityOverview extends PureComponent {
     chartData = sortData.map((item, i) => {
       return {
         value: item.cumulativeConfirmed,
-        name: item.cityNameCn,
+        name: item[tooltipName],
         ...(i <= 10 ? {
           label: {
             normal: {

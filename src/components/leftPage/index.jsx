@@ -45,7 +45,7 @@ class index extends PureComponent {
         arr: [confirmed, curConfirm, deaths, recovered]
       })
     } else if ("pr" in mapData && tabName == "pr") {
-      const { confirmed, curConfirm, deaths, recovered } = sortBy(mapData["pr"], function (o) { return -Number(o.confirmed) })[0];
+      const { confirmed, curConfirm, deaths, recovered } = sortBy(mapData["pr"].filter(item=>item.area!=="美国"), function (o) { return -Number(o.confirmed) })[0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })
@@ -63,7 +63,6 @@ class index extends PureComponent {
       return null
     }
     const { arr } = this.state;
-
     return (
       <LeftPage>
         {/* 顶部图表 */}
@@ -101,9 +100,9 @@ class index extends PureComponent {
                 data && data.length > 0 && (<CityOverview data={data} />)
               }
             </div>) : (<>
-              <TitleBox title="环太实时州"></TitleBox>
+              <TitleBox title="环太城市疫情概况"></TitleBox>
               {
-                data2 && (<RealTimeCity data={data2} title="州" fields={["stateNameCn", "newConfirmed", "newCures", "newDeaths"]}></RealTimeCity>)
+                data2 && (<CityOverview data={data2} tooltipName="cityNameCn" />)
               }
             </>)}
           </BorderBox8>
