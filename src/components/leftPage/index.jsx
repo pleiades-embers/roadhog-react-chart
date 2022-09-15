@@ -35,7 +35,7 @@ class index extends PureComponent {
 
   UNSAFE_componentWillReceiveProps(prevProps) {
 
-    const { mapData, tabName } = prevProps;
+    const { mapData, tabName,countryName } = prevProps;
     if (!mapData) {
       return null
     }
@@ -45,7 +45,7 @@ class index extends PureComponent {
         arr: [confirmed, curConfirm, deaths, recovered]
       })
     } else if ("pr" in mapData && tabName == "pr") {
-      const { confirmed, curConfirm, deaths, recovered } = sortBy(mapData["pr"].filter(item=>item.area!=="美国"), function (o) { return -Number(o.confirmed) })[0];
+      const { confirmed, curConfirm, deaths, recovered } = countryName?mapData["pr"].some(item=>{return item.areaEn===countryName})?mapData["pr"].find(item=>{return item.areaEn===countryName}):{confirmed:0, curConfirm:0, deaths:0, recovered:0}:sortBy(mapData["pr"].filter(item=>item.area!=="美国"), function (o) { return -Number(o.confirmed) })[0];
       this.setState({
         arr: [confirmed, curConfirm, deaths, recovered]
       })
@@ -127,7 +127,8 @@ const mapStateToProps = (state) => {
     rankData: state.centerPage.rankData,
     tabName: state.centerPage.tabName,
     data: state.rightPage.data,
-    data2: state.rightPage.data2
+    data2: state.rightPage.data2,
+    countryName: state.leftPage.countryName
   };
 };
 

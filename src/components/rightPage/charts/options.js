@@ -406,7 +406,7 @@ export const DiagnosisTrendOption = (params) => ({
         },
         data: [
           {
-            yAxis: params.map(item=> item.increase).reduce((a,b) => Number(a) + Number(b), 0) / 5 ,
+            yAxis: params.map(item=> item.increase).reduce((a,b) => Number(a) + Number(b), 0) / 7 ,
           },
         ],
       },

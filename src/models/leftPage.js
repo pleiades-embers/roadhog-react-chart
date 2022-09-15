@@ -36,7 +36,10 @@ export default {
   // 同步操作
   reducers: {
     setData(state, action) {
-      return { ...state, ...action.payload };
+      return { ...state, data:action.payload };
+    },
+    setCountryName(state, action) {
+      return { ...state, countryName:action.payload };
     },
   },
 };

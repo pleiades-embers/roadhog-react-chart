@@ -66,6 +66,11 @@ export default class Chart extends PureComponent {
           width: 'auto',
           height: 'auto',
         });
+        if(this.props.onClick){
+          this.chart.on('click',this.props.onClick);
+        }
+        
+
         resolve();
       }, 0);
     });

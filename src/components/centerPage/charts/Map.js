@@ -1,7 +1,7 @@
 import React, { PureComponent, createRef } from "react";
 import Chart from "../../../utils/chart";
 import { mapOptions } from "./options";
-
+import { connect } from "dva";
 /**
  * 1. 参考echarts 3d地图案例 https://www.makeapie.cn/echarts_content/x8qMIlaLpr.html
  * 2. 地图数据源 http://img.hcharts.cn/mapdata/  (无用)
@@ -25,11 +25,17 @@ class Map extends PureComponent {
 
   }
 
-
+  onClick=(params)=>{
+    if(this.props.tabName==="pr"){
+        this.props.setCountryName(params.data.name)
+    }
+  }
 
   render() {
     const { renderer } = this.state;
     const { mapData, chartName ,tabName} = this.props;
+
+  
 
     return (
       <div
@@ -43,6 +49,7 @@ class Map extends PureComponent {
           <Chart
             ref={this.chartRef}
             renderer={renderer}
+            {...(chartName==="Asia"&&{onClick:this.onClick})}
             option={mapOptions(mapData[tabName], chartName, {
               itemStyle: {
                 opacity: 1, // 透明度
@@ -59,4 +66,17 @@ class Map extends PureComponent {
   }
 }
 
-export default Map;
+
+
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // dispatching plain actions
+    setCountryName:(params) => dispatch({ type: 'leftPage/setCountryName',payload:params })
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Map);
