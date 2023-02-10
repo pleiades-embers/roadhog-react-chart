@@ -67,7 +67,7 @@ class index extends PureComponent {
                           />
                         }
                       >
-                        <a href={"http://"+item.newsLink} target="_blank">
+                        <a href={item.newsLink} target="_blank">
                         <TimeLineItemStyle>
                           <div>{item.newsTime}</div>
                           <div
