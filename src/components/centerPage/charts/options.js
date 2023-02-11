@@ -3,7 +3,7 @@ export function mapOptions(params, chartName, itemStyle) {
     return data.map((item) => {
       return {
         name: item.areaEn,
-        value: item.curConfirm,
+        value: item.confirmed,
       };
     });
   }
@@ -13,47 +13,7 @@ export function mapOptions(params, chartName, itemStyle) {
     visualMap: {
       show:false,
       type: "piecewise",
-      pieces: [
-        {
-          min: 100001,
-          color: '#BB0000',
-      },
-      {
-          min: 50001,
-          max: 100000,
-          color: '#a2242c' // #73240D
-      },
-      {
-          min: 25001,
-          max: 50000,
-          color: '#C62B2B',
-      },
-      {
-          min: 1001,
-          max: 25000,
-          color: '#D25555',
-      },
-      {
-          min: 3001,
-          max: 10000,
-          color: '#d0513c',
-      },
-      {
-        min: 501,
-        max: 3000,
-        color: '#ed9f65'
-       },
-    
-      {
-          min: 1,
-          max: 500,
-          color: '#ed9a62'
-      },
-      {
-          value: 0,
-          color: 'white'
-      }
-      ],
+      pieces: window.mapOption.visualMap.pieces,
       orient: "vertical",
       itemWidth: 25,
       itemHeight: 15,

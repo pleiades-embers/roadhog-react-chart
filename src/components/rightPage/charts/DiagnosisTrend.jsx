@@ -13,7 +13,6 @@ class DiagnosisTrend extends PureComponent {
   render() {
     const { renderer } = this.state;
     const {data}=this.props
-    console.log(data,"data")
     return (
       <div
         style={{
