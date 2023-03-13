@@ -7,7 +7,13 @@
         "libraryDirectory": "es",
         "camel2DashComponentName": false,
         "style": true
-      }
-    ]
+      },
+      {
+        "libraryName": "@arco-design/web-react/icon",
+        "libraryDirectory": "react-icon",
+        "camel2DashComponentName": false,
+      },
+    ],
+   
   ]
 }

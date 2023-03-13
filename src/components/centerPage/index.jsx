@@ -5,9 +5,11 @@ import CenterTab from "./CenterTab/index";
 import { BorderBox8 } from "@jiaminghi/data-view-react";
 import { connect } from "dva";
 import TitleBox from "../TitleBox/index";
-import { Timeline } from "@arco-design/web-react";
-import "@arco-design/web-react/dist/css/arco.css";
-const TimelineItem = Timeline.Item;
+// import { Timeline } from "@arco-design/web-react";
+
+// import "@arco-design/web-react/dist/css/arco.css";
+
+// const TimelineItem = Timeline.Item;
 class index extends PureComponent {
   constructor(props) {
     super(props);
@@ -49,13 +51,12 @@ class index extends PureComponent {
         <CenterBottom>
           <BorderBox8 className="borderBox8" dur="0">
             <TitleBox big={"big"} title="传染病风险预警"></TitleBox>
-            <TimeLineStyle>
+            {/* <TimeLineStyle>
               <Timeline>
                 {message &&
                   message.map((item, index) => {
                     return (
                       <TimelineItem
-
                         key={item.id}
                         dot={
                           <img
@@ -79,7 +80,7 @@ class index extends PureComponent {
                     );
                   })}
               </Timeline>
-            </TimeLineStyle>
+            </TimeLineStyle> */}
           </BorderBox8>
         </CenterBottom>
       </CenterPage>
